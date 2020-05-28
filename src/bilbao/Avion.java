@@ -4,7 +4,7 @@ public class Avion implements PermisosDespegue{
 	
 	static private String nombre;
 	private String origen;
-	private String destino;
+	static private String destino;
 	private boolean radio = false;
 	private boolean rutaAsignada = false;
 	private boolean puestaenMarcha = false;
