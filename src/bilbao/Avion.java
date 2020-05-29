@@ -1,27 +1,44 @@
 package bilbao;
 
-public class Avion implements PermisosDespegue{
-	
-	static private String nombre;
+public class Avion implements PermisosDespegue, PermisosAterrizaje {
+
+	private String nombre;
 	private String origen;
-	static private String destino;
+	private String destino;
 	private boolean radio = false;
 	private boolean rutaAsignada = false;
 	private boolean puestaenMarcha = false;
 	private boolean despegar = false;
-	
-	
-	Avion(String nombre, String origen, String destino){
-		
+	private boolean contacto = false;
+	private boolean apagado = false;
+
+	Avion(String nombre, String origen, String destino) {
+
 		setNombre(nombre);
 		setOrigen(origen);
 		setDestino(destino);
-		
+
 	}
-	
-	Avion(){}
-	
-	
+
+	Avion() {
+	}
+
+	public boolean getContacto() {
+		return contacto;
+	}
+
+	public void setContacto(boolean contacto) {
+		this.contacto = contacto;
+	}
+
+	public boolean Apagado() {
+		return apagado;
+	}
+
+	public void setApagado(boolean apagado) {
+		this.apagado = apagado;
+	}
+
 	public String getOrigen() {
 		return origen;
 	}
@@ -70,8 +87,6 @@ public class Avion implements PermisosDespegue{
 		this.despegar = despegar;
 	}
 
-
-
 	public String getNombre() {
 		return nombre;
 	}
@@ -79,24 +94,30 @@ public class Avion implements PermisosDespegue{
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
-	@Override
-	public void permisos() {
-		
+
+	public void permisoDespegue() {
+
 		pruebaRadio();
 		asignarRuta();
 		puestaenMarcha();
 		despegue();
-		
+
+	}
+
+	public void permisoAterrizar() {
+
+		contacto();
+		apagadomotores();
+
 	}
 
 	@Override
-	public boolean pruebaRadio(){
+	public boolean pruebaRadio() {
 		Radar rBilbao = new Radar();
-		
+
 		System.out.println("Muy buenas. Aquí " + nombre + " para prueba de radio");
-		
-		if(rBilbao.pruebaRadio()) {
+
+		if (rBilbao.pruebaRadio(nombre)) {
 			radio = true;
 			return true;
 		}
@@ -107,12 +128,12 @@ public class Avion implements PermisosDespegue{
 	public boolean asignarRuta() {
 		Radar rBilbao = new Radar();
 		System.out.println(nombre + " solicitamos ruta para " + destino);
-		
-		if(rBilbao.asignarRuta()) {
+
+		if (rBilbao.asignarRuta(nombre, destino)) {
 			rutaAsignada = true;
-		return true;
+			return rutaAsignada;
 		}
-		
+
 		return false;
 	}
 
@@ -120,10 +141,10 @@ public class Avion implements PermisosDespegue{
 	public boolean puestaenMarcha() {
 		Radar rBilbao = new Radar();
 		System.out.println("Listos para puesta en marcha y retroceso.");
-		
-		if(rBilbao.puestaenMarcha()) {
+
+		if (rBilbao.puestaenMarcha(nombre)) {
 			puestaenMarcha = true;
-			return true;
+			return puestaenMarcha;
 		}
 		return false;
 	}
@@ -132,14 +153,61 @@ public class Avion implements PermisosDespegue{
 	public boolean despegue() {
 		Radar rBilbao = new Radar();
 		System.out.println(nombre + " en punto de espera para despegar");
-		
-		if(rBilbao.despegue()) {
+
+		if (rBilbao.despegue(nombre)) {
 			despegar = true;
-			return true;
+			return despegar;
 		}
 		return false;
 	}
 
+	public void checklistDespegue() {
 
+		if (radio == true && rutaAsignada == true && puestaenMarcha == true && despegar == true) {
+
+			System.out.println("Se puede");
+		} else {
+
+			System.out.println("NO se puede");
+		}
+
+	}
+
+	@Override
+	public boolean contacto() {
+		Radar rBilbao = new Radar();
+		System.out.println("Buenos días. aquí " + nombre + " establecido contacto ILS");
+
+		if (rBilbao.contacto(nombre)) {
+			contacto = true;
+			return contacto;
+		}
+		return false;
+	}
+
+	@Override
+	public boolean apagadomotores() {
+		Radar rBilbao = new Radar();
+		System.out.println(nombre + " apagado de motores. Gracias");
+		if (rBilbao.apagadoMotores(nombre, destino)) {
+			apagado = true;
+			return apagado;
+		}
+
+		return false;
+
+	}
+
+	public void checklistAterrizaje() {
+
+		if (contacto == true) {
+
+			System.out.println("Se puede");
+		} else {
+
+			System.out.println("NO se puede");
+		}
+
+	}
 
 }

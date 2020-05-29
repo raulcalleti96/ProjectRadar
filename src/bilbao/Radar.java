@@ -1,12 +1,13 @@
 package bilbao;
 
-public class Radar implements PermisosDespegue{
+public class Radar {
 	private String nombre;
 	private boolean radio = false;
 	private boolean rutaAsignada = false;
 	private boolean puestaenMarcha = false;
 	private boolean despegar = false;
-
+	private boolean contacto = false;
+	private boolean apagado = false;
 
 	public String getNombre() {
 		return nombre;
@@ -15,47 +16,56 @@ public class Radar implements PermisosDespegue{
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+	public boolean getContacto() {
+		return contacto;
+	}
+
+	public void setContacto(boolean contacto) {
+		this.contacto = contacto;
+	}
+
+	public boolean Apagado() {
+		return apagado;
+	}
+
+	public void setApagado(boolean apagado) {
+		this.apagado = apagado;
+	}
 	
 	
-	
-	public void permisos() {
+	public void permisos(){
 		
 	
 	}
 
 
-	public boolean pruebaRadio() {
-		Avion nuevo = new Avion();
-		Aeropuerto bilbo = new Aeropuerto();
-		System.out.println( nuevo.getNombre() + " le recibo correctamente.");
+	public boolean pruebaRadio(String nombre) {	
+		System.out.println( nombre  + " le recibo correctamente.");
 		radio = true;
 		return true;
 	}
 
-	public boolean asignarRuta() {
-		Avion nuevo = new Avion();
+	public boolean asignarRuta(String nombre, String destino) {
 		Aeropuerto bilbo = new Aeropuerto();
-		System.out.println( nuevo.getNombre() + " autorizado a " + nuevo.getDestino() + ". Su plan de vuelo es: Pista " + bilbo.getPista1() + ".Viento: " + bilbo.getViento());
+		System.out.println( nombre + " autorizado a " + destino  + ". Su plan de vuelo es: Pista " + bilbo.getPista1() + ".Viento: " + bilbo.getViento());
 		rutaAsignada = true;
 		return true;
 		
 	}
 
 
-	public boolean puestaenMarcha() {
-		Avion nuevo = new Avion();
-		Aeropuerto bilbo = new Aeropuerto();
-		System.out.println( nuevo.getNombre() + " Puesta en marcha y retroceso aprobada");
+	public boolean puestaenMarcha(String nombre) {
+		
+		System.out.println(nombre  + " Puesta en marcha y retroceso aprobada");
 		puestaenMarcha = true;
 		return true;
 		
 	}
 
 
-	public boolean despegue() {
-		Avion nuevo = new Avion();
-		Aeropuerto bilbo = new Aeropuerto();
-		System.out.println( nuevo.getNombre() + " aprobado para despegar. Buen vuelo");
+	public boolean despegue(String nombre) {
+		
+		System.out.println( nombre  + " aprobado para despegar. Buen vuelo");
 		despegar = true;
 		return true;
 		
@@ -91,6 +101,23 @@ public class Radar implements PermisosDespegue{
 
 	public void setDespegar(boolean despegar) {
 		this.despegar = despegar;
+	}
+	
+	
+	public boolean contacto(String nombre){
+		
+		Aeropuerto bilbo = new Aeropuerto();
+		System.out.println( "Recibido " + nombre + " Viento:" + " ESTE" + " pista: " + bilbo.getPista1() + " Autorizado " + " para aterrizar en 40 segundos" + ".Pista de rodadura: " + bilbo.getRadadura1()+ " Puerta: " + bilbo.getPista2() ) ;
+		contacto = true;
+		return contacto;
+		
+	}
+	
+	public boolean apagadoMotores(String nombre, String destino) {
+		
+		System.out.println( nombre  + " Recibido. Buena estancia en " + destino);
+		apagado = true;	
+		return apagado;
 	}
 
 }
