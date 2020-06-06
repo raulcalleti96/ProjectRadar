@@ -38,6 +38,7 @@ public class RegistroDeTrafico extends JPanel{
 		area.setLineWrap(true);
 		area.setEditable(true);
 		
+		//POLLITAS
 	
 		add(scroll);
 	}
