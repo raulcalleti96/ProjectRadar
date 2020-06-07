@@ -2,8 +2,8 @@ package Contenido_Paneles;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -34,13 +34,10 @@ public class TablalistaAvionesAeropuerto extends JPanel{
 		
 	public TablalistaAvionesAeropuerto(){
 		
-		setLayout(new FlowLayout());
-		setBackground(Color.BLACK);
-		tablaAero.setBackground(Color.GREEN.darker());
-		setSize(50, 20);
+		setLayout(new BorderLayout());
+		setBackground(Color.BLACK.brighter());
+		tablaAero.setBackground(new Color(162, 212, 83));
 		setToolTipText("Lista de los aviones del aeropuerto");
-		/*tablaAero.setSize(45, 45);
-		scroll.setSize(30, 30);*/
 		
 		
 		//METODO DE SELECCION DEL AVIÓN
@@ -69,7 +66,7 @@ public class TablalistaAvionesAeropuerto extends JPanel{
 		});
 		
 
-		add(scroll);
+		add(scroll,BorderLayout.CENTER);
 	
 		
 	}

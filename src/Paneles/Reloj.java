@@ -10,16 +10,22 @@ import java.awt.event.ActionListener;
 
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
+
+import Contenido_Paneles.DireccionViento;
+
 import javax.swing.JLabel;
+import javax.swing.JMenu;
 import javax.swing.JPanel;
 
 public class Reloj extends JPanel implements ActionListener{
 	public static final long serialVersionUID = 1;
 	
+	JMenu Menu = new JMenu();
+	
 	JLabel time = new JLabel();
 	JLabel date = new JLabel();
 	
-	JLabel viento = new JLabel("Viento: Norte");
+	DireccionViento viento = new DireccionViento();
 	SimpleDateFormat sdf;
 	SimpleDateFormat sdft;
 	
@@ -28,31 +34,32 @@ public class Reloj extends JPanel implements ActionListener{
 		setLayout(new GridLayout(3,1));
 	
 		//Reloj
-		sdf = new SimpleDateFormat("         MMMM dd yyyy");
-		time.setFont(new Font("Consolas", Font.BOLD, 25));
+		sdf = new SimpleDateFormat("   hh:mm:ss a");
+		time.setFont(new Font("Consolas", Font.BOLD, 20));
         time.setHorizontalAlignment(SwingConstants.LEFT);
         time.setForeground(Color.GREEN);
 		
     	//Fecha
-		sdft = new SimpleDateFormat("   hh:mm:ss a");
-        date.setFont(new Font("Consolas", Font.BOLD,20 ));
+		sdft = new SimpleDateFormat(" MMMM dd yyyy");
+        date.setFont(new Font("Consolas", Font.BOLD,15 ));
         date.setHorizontalAlignment(SwingConstants.CENTER);
         date.setForeground(Color.GREEN);
 		
         //Viento
-        viento.setFont(new Font("Consolas", Font.BOLD, 20));
+        viento.setFont(new Font("Consolas", Font.BOLD, 15));
         viento.setHorizontalAlignment(SwingConstants.LEFT);
         viento.setForeground(Color.GREEN);
         
-        setBackground(Color.BLUE);
+        Color gris = new Color(91, 117, 113);
+        setBackground(gris);
 		
-		Timer t = new Timer(250, this);
+		Timer t = new Timer(1000, this);
 		t.start();
 		
 		add(viento);
-		add(date);
 		add(time);
-	  
+		add(date);
+		  
 	}
 	
 	 public void actionPerformed(ActionEvent ae) {
@@ -60,7 +67,9 @@ public class Reloj extends JPanel implements ActionListener{
 		    time.setText(sdf.format(d));
 		    date.setText(sdft.format(d));
 		    
-		    
-		  }
-
+	 }
 }
+
+
+
+

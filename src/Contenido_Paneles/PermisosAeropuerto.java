@@ -18,7 +18,7 @@ public class PermisosAeropuerto extends JPanel{
 	
 	public PermisosAeropuerto() {
 		
-		setLayout(new FlowLayout());
+		setLayout(new BorderLayout());
 		setBackground(Color.BLACK);
 		
 		//Color a los demás paneles para distinguirlos
@@ -40,11 +40,11 @@ public class PermisosAeropuerto extends JPanel{
 		
 		//Añadimos los paneles al JTABBED
 		PanelTerminal.add("RADIO", pruebaradio);
-		PanelTerminal.add("Asignar Ruta", asignaruta);
-		PanelTerminal.add("Puesta en Marcha", puestaenmarcha);
-		PanelTerminal.add("Despegue", despegue);
+		PanelTerminal.add("ASIGNAR PISTA", asignaruta);
+		PanelTerminal.add("ARRANQUE MOTORES", puestaenmarcha);
+		PanelTerminal.add("DESPEGUE", despegue);
 		
-		add(PanelTerminal);
+		add(PanelTerminal,BorderLayout.CENTER);
 		
 		
 		

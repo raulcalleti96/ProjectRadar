@@ -18,11 +18,11 @@ public class PermisosRadar extends JPanel{
 	
 	public PermisosRadar() {
 		
-		setLayout(new FlowLayout());
+		setLayout(new BorderLayout());
 		setBackground(Color.BLACK);
 		
 		//Color a los demás paneles para distinguirlos
-		pruebaradio.setBackground(Color.BLACK);
+		pruebaradio.setBackground(Color.GREEN);
 		asignaruta.setBackground(Color.BLUE);
 		puestaenmarcha.setBackground(Color.CYAN);
 		despegue.setBackground(Color.RED);
@@ -39,12 +39,11 @@ public class PermisosRadar extends JPanel{
 		
 		
 		//Añadimos los paneles al JTABBED
-		PanelRadar.add("RADIO", pruebaradio);
-		PanelRadar.add("Asignar Ruta", asignaruta);
-		PanelRadar.add("Puesta en Marcha", puestaenmarcha);
-		PanelRadar.add("Despegue", despegue);
-		
-		add(PanelRadar);
+		PanelRadar.add("PERMISO ATERRIZAJE", pruebaradio);
+		PanelRadar.add("CONTACTO", asignaruta);
+		PanelRadar.add("APAGADO MOTORES", puestaenmarcha);
+	
+		add(PanelRadar,BorderLayout.CENTER);
 		
 	}
 

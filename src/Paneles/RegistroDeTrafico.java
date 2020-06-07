@@ -1,9 +1,12 @@
 package Paneles;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
+import java.awt.Dimension;
+//import java.awt.FlowLayout;
 import java.awt.Font;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -12,7 +15,7 @@ public class RegistroDeTrafico extends JPanel{
 	
 	static final long serialVersionUID =1;
 
-	final String TITULO = "REGISTRO DEL TRAFICO AEREO";
+	JLabel titulo = new JLabel("Registro de tráfico aéreo");
 	
 	JTextArea area = new JTextArea(50,40);
 	JScrollPane scroll= new JScrollPane(area);
@@ -20,26 +23,32 @@ public class RegistroDeTrafico extends JPanel{
 	
 	public RegistroDeTrafico() {
 		
-		setLayout(new FlowLayout());
+		setLayout(new BorderLayout());
 	
 		setBackground(Color.BLACK);
 		
-	/*	scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		*/
+		//scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+	
+		
 		scroll.setBorder(null);
+		scroll.setPreferredSize(new Dimension(300,180));
 		Font fuente = new Font("Consolas",Font.BOLD,15);
+
+		
+		titulo.setFont(fuente);
+		titulo.setForeground(Color.YELLOW);
 		
 		area.setFont(fuente);
-		area.setText(TITULO);
 		area.setBackground(Color.BLACK);
-		area.setForeground(Color.CYAN);
+		area.setForeground(Color.RED);
 		
 		area.setLineWrap(true);
+		area.setWrapStyleWord(true);
+		
 		area.setEditable(true);
 		
-	
-		add(scroll);
+		add(titulo,BorderLayout.NORTH);
+		add(scroll,BorderLayout.CENTER);
 	}
 
 }

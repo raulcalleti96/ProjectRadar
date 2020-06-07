@@ -2,8 +2,8 @@ package Contenido_Paneles;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -34,9 +34,9 @@ public class TablalistaAvionesRadar extends JPanel{
 		
 	public TablalistaAvionesRadar(){
 		
-		setLayout(new FlowLayout());
+		setLayout(new BorderLayout());
 		setBackground(Color.BLACK);
-		tablaAero.setBackground(Color.CYAN.darker());
+		tablaAero.setBackground(new Color(55, 119, 171));
 		setSize(50, 20);
 		setToolTipText("Lista de los aviones del aeropuerto");
 		/*tablaAero.setSize(45, 45);
@@ -69,7 +69,7 @@ public class TablalistaAvionesRadar extends JPanel{
 		});
 		
 
-		add(scroll);
+		add(scroll,BorderLayout.CENTER);
 	
 		
 	}
