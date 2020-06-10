@@ -4,12 +4,10 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-
 import javax.swing.JFrame;
 import javax.swing.JSplitPane;
 import javax.swing.JTabbedPane;
 import javax.swing.UIManager;
-
 import Paneles.ImagenMapa;
 import Paneles.PanelAeropuerto;
 import Paneles.PanelRadar;
@@ -44,7 +42,7 @@ public class Ventana_Radar extends JFrame{
 		
 		info.setDividerSize(2);
 		
-
+		//setIconImage( new ImageIcon(getClass().getResource("pista.png")).getImage()); 
 		
 		restricciones.fill = GridBagConstraints.BOTH;
 		
@@ -54,7 +52,8 @@ public class Ventana_Radar extends JFrame{
 		
 		inferior.add("En vuelo",radar);
 		inferior.add("En terminal",terminal);
-		
+
+		 
 		
 		añadeGrid(mapa, 0, 0);
 		añadeGrid(info, 1, 0);
@@ -91,7 +90,7 @@ public class Ventana_Radar extends JFrame{
 		ventana.setTitle("CONTROL AÉREO");
 		ventana.setLocation(250, 100);
 		ventana.setSize(1000, 600);
-
+		//ventana.setIconImage(Toolkit.getDefaultToolkit().getImage("icono.png"));
 		
 		//Hace la pantalla completa
 	//ventana.setExtendedState(JFrame.MAXIMIZED_BOTH);

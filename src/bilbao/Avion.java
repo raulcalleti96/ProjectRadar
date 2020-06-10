@@ -20,7 +20,7 @@ public class Avion implements PermisosDespegue, PermisosAterrizaje {
 
 	}
 
-	Avion() {
+	public Avion() {
 	}
 
 	public boolean getContacto() {
