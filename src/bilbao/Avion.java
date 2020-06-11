@@ -5,6 +5,8 @@ public class Avion implements PermisosDespegue, PermisosAterrizaje {
 	private String nombre;
 	private String origen;
 	private String destino;
+	private int pista;
+	private boolean seleccion = false;
 	private boolean radio = false;
 	private boolean rutaAsignada = false;
 	private boolean puestaenMarcha = false;
@@ -20,9 +22,21 @@ public class Avion implements PermisosDespegue, PermisosAterrizaje {
 
 	}
 
-	public Avion() {
+	public Avion() {}
+	
+	public boolean getRadio() {
+		return radio;
 	}
 
+	public void setRadio(boolean radio) {
+		this.radio = radio;
+	}
+	public boolean getSeleccion() {
+		return seleccion;
+	}
+	public void setSeleccion(boolean seleccion) {
+		this.seleccion = seleccion;
+	}
 	public boolean getContacto() {
 		return contacto;
 	}
@@ -55,13 +69,6 @@ public class Avion implements PermisosDespegue, PermisosAterrizaje {
 		this.destino = destino;
 	}
 
-	public boolean getRadio() {
-		return radio;
-	}
-
-	public void setRadio(boolean radio) {
-		radio = this.radio;
-	}
 
 	public boolean setRutaAsignada() {
 		return rutaAsignada;
@@ -111,7 +118,7 @@ public class Avion implements PermisosDespegue, PermisosAterrizaje {
 
 	}
 
-	@Override
+	
 	public boolean pruebaRadio() {
 		Radar rBilbao = new Radar();
 
@@ -124,7 +131,7 @@ public class Avion implements PermisosDespegue, PermisosAterrizaje {
 		return false;
 	}
 
-	@Override
+	
 	public boolean asignarRuta() {
 		Radar rBilbao = new Radar();
 		System.out.println(nombre + " solicitamos ruta para " + destino);
@@ -137,7 +144,7 @@ public class Avion implements PermisosDespegue, PermisosAterrizaje {
 		return false;
 	}
 
-	@Override
+	
 	public boolean puestaenMarcha() {
 		Radar rBilbao = new Radar();
 		System.out.println("Listos para puesta en marcha y retroceso.");
@@ -149,7 +156,7 @@ public class Avion implements PermisosDespegue, PermisosAterrizaje {
 		return false;
 	}
 
-	@Override
+	
 	public boolean despegue() {
 		Radar rBilbao = new Radar();
 		System.out.println(nombre + " en punto de espera para despegar");
@@ -173,7 +180,7 @@ public class Avion implements PermisosDespegue, PermisosAterrizaje {
 
 	}
 
-	@Override
+	
 	public boolean contacto() {
 		Radar rBilbao = new Radar();
 		System.out.println("Buenos días. aquí " + nombre + " establecido contacto ILS");
@@ -185,7 +192,7 @@ public class Avion implements PermisosDespegue, PermisosAterrizaje {
 		return false;
 	}
 
-	@Override
+	
 	public boolean apagadomotores() {
 		Radar rBilbao = new Radar();
 		System.out.println(nombre + " apagado de motores. Gracias");
@@ -209,5 +216,15 @@ public class Avion implements PermisosDespegue, PermisosAterrizaje {
 		}
 
 	}
+
+	public int getPista() {
+		return pista;
+	}
+
+	public void setPista(int pista) {
+		this.pista = pista;
+	}
+
+
 
 }

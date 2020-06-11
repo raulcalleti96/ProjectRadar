@@ -25,8 +25,11 @@ public class Ventana_Radar extends JFrame{
 	
 	
 	//Componentes del panel inferior
+
+	
 	PanelRadar radar = new PanelRadar();
 	PanelAeropuerto terminal = new PanelAeropuerto();
+	
 	
 	//Componentes del GIU
 	JTabbedPane inferior = new JTabbedPane();
@@ -90,6 +93,7 @@ public class Ventana_Radar extends JFrame{
 		ventana.setTitle("CONTROL AÉREO");
 		ventana.setLocation(250, 100);
 		ventana.setSize(1000, 600);
+	
 		//ventana.setIconImage(Toolkit.getDefaultToolkit().getImage("icono.png"));
 		
 		//Hace la pantalla completa

@@ -46,10 +46,7 @@ public class Radar {
 	}
 
 	public boolean asignarRuta(String nombre, String destino) {
-		Aeropuerto bilbo = new Aeropuerto();
-		System.out.println( nombre + " autorizado a " + destino  + ". Su plan de vuelo es: Pista " + bilbo.getPista1() + ".Viento: " + bilbo.getViento());
-		rutaAsignada = true;
-		return true;
+			return false;
 		
 	}
 
@@ -106,10 +103,8 @@ public class Radar {
 	
 	public boolean contacto(String nombre){
 		
-		Aeropuerto bilbo = new Aeropuerto();
-		System.out.println( "Recibido " + nombre + " Viento:" + " ESTE" + " pista: " + bilbo.getPista1() + " Autorizado " + " para aterrizar en 40 segundos" + ".Pista de rodadura: " + bilbo.getRadadura1()+ " Puerta: " + bilbo.getPista2() ) ;
-		contacto = true;
-		return contacto;
+		
+		return false;
 		
 	}
 	
