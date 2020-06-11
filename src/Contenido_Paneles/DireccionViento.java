@@ -12,7 +12,7 @@ public class DireccionViento extends JLabel implements ActionListener{
 	
 	public DireccionViento(){
 		
-		setText("VIENTO: NORTE");
+		setText(" VIENTO: NORTE");
 	
 		Timer t = new Timer(6000, this);
 		t.start();
@@ -28,19 +28,19 @@ public class DireccionViento extends JLabel implements ActionListener{
 		switch(direccion) {
 		
 			case 0:
-				setText("VIENTO: NORTE");
+				setText(" VIENTO: NORTE");
 				break;
 			
 			case 1:
-				setText("VIENTO: SUR");
+				setText(" VIENTO: SUR");
 				break;
 				
 			case 2:
-				setText("VIENTO: ESTE");
+				setText(" VIENTO: ESTE");
 				break;
 				
 			case 3:
-				setText("VIENTO: OESTE");
+				setText(" VIENTO: OESTE");
 				break;
 	  }
 	}

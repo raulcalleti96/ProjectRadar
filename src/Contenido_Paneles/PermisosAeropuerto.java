@@ -39,10 +39,10 @@ public class PermisosAeropuerto extends JPanel{
 		
 		
 		//Añadimos los paneles al JTABBED
-		PanelTerminal.add("RADIO", pruebaradio);
-		PanelTerminal.add("ASIGNAR PISTA", asignaruta);
-		PanelTerminal.add("ARRANQUE MOTORES", puestaenmarcha);
-		PanelTerminal.add("DESPEGUE", despegue);
+		PanelTerminal.add("<html><strong>RADIO</strong></html>", pruebaradio);
+		PanelTerminal.add("<html><strong>ASIGNAR PISTA</strong></html>", asignaruta);
+		PanelTerminal.add("<html><strong>ARRANQUE MOTORES</strong></html>", puestaenmarcha);
+		PanelTerminal.add("<html><strong>DESPEGUE</strong></html>", despegue);
 		
 		add(PanelTerminal,BorderLayout.CENTER);
 		

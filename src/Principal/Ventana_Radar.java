@@ -10,6 +10,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.UIManager;
 
 import Paneles.ImagenMapa;
+
 import Paneles.PanelAeropuerto;
 import Paneles.PanelRadar;
 import Paneles.RegistroDeTrafico;
@@ -18,12 +19,11 @@ import Paneles.Reloj;
 
 public class Ventana_Radar extends JFrame{
 	private static final long serialVersionUID = 1L;
-	
+
 	//Reloj Y Registro
 	Reloj reloj = new Reloj();
 	RegistroDeTrafico rt = new RegistroDeTrafico();
 	JSplitPane info = new JSplitPane(JSplitPane.VERTICAL_SPLIT,reloj,rt);
-	
 	
 	//Componentes del panel inferior
 	PanelRadar radar = new PanelRadar();
@@ -32,7 +32,6 @@ public class Ventana_Radar extends JFrame{
 	//Componentes del GIU
 	JTabbedPane inferior = new JTabbedPane();
 	ImagenMapa mapa = new ImagenMapa();
-	
 	
 	//Restricciones del gridbag
 	GridBagConstraints restricciones = new GridBagConstraints();
@@ -43,16 +42,14 @@ public class Ventana_Radar extends JFrame{
 		
 		info.setDividerSize(2);
 		
-
-		
 		restricciones.fill = GridBagConstraints.BOTH;
 		
 		restricciones.weightx = 1;
 		restricciones.weighty = 1;
 		
 		
-		inferior.add("En vuelo",radar);
-		inferior.add("En terminal",terminal);
+		inferior.add("<html><i>En vuelo</i></html>",radar);
+		inferior.add("<html><i>En terminal</i></html>",terminal);
 		
 		
 		añadeGrid(mapa, 0, 0);
@@ -82,10 +79,10 @@ public class Ventana_Radar extends JFrame{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
+
 		Ventana_Radar ventana = new Ventana_Radar();
-		
+	
+
 	//	ventana.setResizable(false);
 		ventana.setTitle("CONTROL AÉREO");
 		ventana.setLocation(250, 100);
@@ -96,8 +93,6 @@ public class Ventana_Radar extends JFrame{
 	//ventana.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		//Le quita los bordes a la pantalla
 		//ventana.setUndecorated(true);
-		
-		
 		
 		ventana.setVisible(true);
 		ventana.setDefaultCloseOperation(EXIT_ON_CLOSE);

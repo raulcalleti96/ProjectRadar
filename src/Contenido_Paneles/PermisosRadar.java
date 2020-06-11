@@ -39,9 +39,9 @@ public class PermisosRadar extends JPanel{
 		
 		
 		//Añadimos los paneles al JTABBED
-		PanelRadar.add("PERMISO ATERRIZAJE", pruebaradio);
-		PanelRadar.add("CONTACTO", asignaruta);
-		PanelRadar.add("APAGADO MOTORES", puestaenmarcha);
+		PanelRadar.add("<html><strong>PERMISO ATERRIZAJE</strong></html>", pruebaradio);
+		PanelRadar.add("<html><strong>CONTACTO</strong></html>", asignaruta);
+		PanelRadar.add("<html><strong>APAGADO MOTORES</strong></html>", puestaenmarcha);
 	
 		add(PanelRadar,BorderLayout.CENTER);
 		
