@@ -1,14 +1,13 @@
+//pruebasraul
 package Principal;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-
 import javax.swing.JFrame;
 import javax.swing.JSplitPane;
 import javax.swing.JTabbedPane;
 import javax.swing.UIManager;
-
 import Paneles.ImagenMapa;
 
 import Paneles.PanelAeropuerto;
@@ -26,8 +25,11 @@ public class Ventana_Radar extends JFrame{
 	JSplitPane info = new JSplitPane(JSplitPane.VERTICAL_SPLIT,reloj,rt);
 	
 	//Componentes del panel inferior
+
+	
 	PanelRadar radar = new PanelRadar();
 	PanelAeropuerto terminal = new PanelAeropuerto();
+	
 	
 	//Componentes del GIU
 	JTabbedPane inferior = new JTabbedPane();
@@ -42,15 +44,23 @@ public class Ventana_Radar extends JFrame{
 		
 		info.setDividerSize(2);
 		
+
+		//setIconImage( new ImageIcon(getClass().getResource("pista.png")).getImage()); 
+
 		restricciones.fill = GridBagConstraints.BOTH;
 		
 		restricciones.weightx = 1;
 		restricciones.weighty = 1;
 		
 		
+
 		inferior.add("<html><i>En vuelo</i></html>",radar);
 		inferior.add("<html><i>En terminal</i></html>",terminal);
-		
+
+		inferior.add("En vuelo",radar);
+		inferior.add("En terminal",terminal);
+
+	
 		
 		añadeGrid(mapa, 0, 0);
 		añadeGrid(info, 1, 0);
@@ -87,7 +97,8 @@ public class Ventana_Radar extends JFrame{
 		ventana.setTitle("CONTROL AÉREO");
 		ventana.setLocation(250, 100);
 		ventana.setSize(1000, 600);
-
+	
+		//ventana.setIconImage(Toolkit.getDefaultToolkit().getImage("icono.png"));
 		
 		//Hace la pantalla completa
 	//ventana.setExtendedState(JFrame.MAXIMIZED_BOTH);
