@@ -5,6 +5,8 @@ public class Avion implements PermisosDespegue, PermisosAterrizaje {
 	private String nombre;
 	private String origen;
 	private String destino;
+	private String rodadura;
+	private int espera;
 	private int pista;
 	private boolean seleccion = false;
 	private boolean radio = false;
@@ -22,8 +24,9 @@ public class Avion implements PermisosDespegue, PermisosAterrizaje {
 
 	}
 
-	public Avion() {}
-	
+	public Avion() {
+	}
+
 	public boolean getRadio() {
 		return radio;
 	}
@@ -31,12 +34,15 @@ public class Avion implements PermisosDespegue, PermisosAterrizaje {
 	public void setRadio(boolean radio) {
 		this.radio = radio;
 	}
+
 	public boolean getSeleccion() {
 		return seleccion;
 	}
+
 	public void setSeleccion(boolean seleccion) {
 		this.seleccion = seleccion;
 	}
+
 	public boolean getContacto() {
 		return contacto;
 	}
@@ -68,7 +74,6 @@ public class Avion implements PermisosDespegue, PermisosAterrizaje {
 	public void setDestino(String destino) {
 		this.destino = destino;
 	}
-
 
 	public boolean setRutaAsignada() {
 		return rutaAsignada;
@@ -118,7 +123,6 @@ public class Avion implements PermisosDespegue, PermisosAterrizaje {
 
 	}
 
-	
 	public boolean pruebaRadio() {
 		Radar rBilbao = new Radar();
 
@@ -131,7 +135,6 @@ public class Avion implements PermisosDespegue, PermisosAterrizaje {
 		return false;
 	}
 
-	
 	public boolean asignarRuta() {
 		Radar rBilbao = new Radar();
 		System.out.println(nombre + " solicitamos ruta para " + destino);
@@ -144,7 +147,6 @@ public class Avion implements PermisosDespegue, PermisosAterrizaje {
 		return false;
 	}
 
-	
 	public boolean puestaenMarcha() {
 		Radar rBilbao = new Radar();
 		System.out.println("Listos para puesta en marcha y retroceso.");
@@ -156,7 +158,6 @@ public class Avion implements PermisosDespegue, PermisosAterrizaje {
 		return false;
 	}
 
-	
 	public boolean despegue() {
 		Radar rBilbao = new Radar();
 		System.out.println(nombre + " en punto de espera para despegar");
@@ -180,7 +181,6 @@ public class Avion implements PermisosDespegue, PermisosAterrizaje {
 
 	}
 
-	
 	public boolean contacto() {
 		Radar rBilbao = new Radar();
 		System.out.println("Buenos días. aquí " + nombre + " establecido contacto ILS");
@@ -192,7 +192,6 @@ public class Avion implements PermisosDespegue, PermisosAterrizaje {
 		return false;
 	}
 
-	
 	public boolean apagadomotores() {
 		Radar rBilbao = new Radar();
 		System.out.println(nombre + " apagado de motores. Gracias");
@@ -225,6 +224,105 @@ public class Avion implements PermisosDespegue, PermisosAterrizaje {
 		this.pista = pista;
 	}
 
+	public String getRodadura() {
+		return rodadura;
+	}
 
+	public void setRodadura(String rodadura) {
+		this.rodadura = rodadura;
+	}
+
+	public int tiempoEspera() {
+
+		if (pista == 18) {
+
+			if ("Y2".equalsIgnoreCase(rodadura)) {
+				
+				espera = 1;
+
+			} else if ("A1".equalsIgnoreCase(rodadura)) {
+				
+				espera = 2;
+
+			} else if ("C2".equalsIgnoreCase(rodadura)) {
+				
+				espera = 3;
+
+			} else if ("E2".equalsIgnoreCase(rodadura)) {
+				
+				espera = 4;
+
+			}
+
+		} else if (pista == 29) {
+			if ("Y2".equalsIgnoreCase(rodadura)) {
+				
+				espera = 3;
+
+			} else if ("A1".equalsIgnoreCase(rodadura)) {
+				
+				espera = 2;
+
+			} else if ("C2".equalsIgnoreCase(rodadura)) {
+				
+				espera = 4;
+
+			} else if ("E2".equalsIgnoreCase(rodadura)) {
+				
+				espera = 1;
+
+			}
+
+		} else if (pista == 35) {
+			if ("Y2".equalsIgnoreCase(rodadura)) {
+				
+				espera = 3;
+
+			} else if ("A1".equalsIgnoreCase(rodadura)) {
+				
+				espera = 2;
+
+			} else if ("C2".equalsIgnoreCase(rodadura)) {
+				
+				espera = 1;
+
+			} else if ("E2".equalsIgnoreCase(rodadura)) {
+				
+				espera = 4;
+
+			}
+
+		} else if (pista == 11) {
+			if ("Y2".equalsIgnoreCase(rodadura)) {
+				
+				espera = 3;
+
+			} else if ("A1".equalsIgnoreCase(rodadura)) {
+				
+				espera = 1;
+
+			} else if ("C2".equalsIgnoreCase(rodadura)) {
+				
+				espera = 2;
+
+			} else if ("E2".equalsIgnoreCase(rodadura)) {
+				
+				espera = 4;
+
+			}
+
+		}
+
+		return espera;
+
+	}
+
+	public int getEspera() {
+		return espera;
+	}
+
+	public void setEspera(int espera) {
+		this.espera = espera;
+	}
 
 }
