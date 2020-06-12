@@ -21,8 +21,6 @@ public class PermisosAeropuerto extends JPanel {
 	static final long serialVersionUID = 1;
 
 	JTabbedPane PanelTerminal = new JTabbedPane();
-
-	
 	String rutaseleccionada;
 	int pistaseleccionada;
 	int indice;

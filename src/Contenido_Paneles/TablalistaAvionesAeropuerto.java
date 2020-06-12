@@ -21,9 +21,8 @@ public class TablalistaAvionesAeropuerto extends JPanel {
 	final String[] NOMBRE_COL = { "NOMBRE", "ORIGEN", "DESTINO" };
 	final int FILAS = 0;
 	final int COLUMNAS = 3;
-	final DefaultTableModel model = new DefaultTableModel(NOMBRE_COL, FILAS); 
+	final DefaultTableModel model = new DefaultTableModel(NOMBRE_COL, FILAS);
 	Control control = null;
-	
 
 	// Tabla Aeropuerto
 	final JTable tablaAero = new JTable(model) {
@@ -47,9 +46,8 @@ public class TablalistaAvionesAeropuerto extends JPanel {
 		tablaAero.setBackground(new Color(162, 212, 83));
 		setToolTipText("Lista de los aviones del aeropuerto");
 		ponerenTabla();
-		//model.addRow(listadoAviones);
+		// model.addRow(listadoAviones);
 
-		
 		// METODO DE SELECCION DEL AVIÓN
 
 		tablaAero.addMouseListener(new MouseAdapter() {
@@ -66,70 +64,63 @@ public class TablalistaAvionesAeropuerto extends JPanel {
 					// Forma una cadena con los atributos del avión para mostrarlos en la asignación
 					// de permisos
 					if (fila >= 0)
-						/*for (int i = 0; i < tablaAero.getColumnCount(); i++) {
-							cadena += tablaAero.getValueAt(fila, i) + " ";
-						}*/
-					// Seleccion del avión para permisos
+						/*
+						 * for (int i = 0; i < tablaAero.getColumnCount(); i++) { cadena +=
+						 * tablaAero.getValueAt(fila, i) + " "; }
+						 */
+						// Seleccion del avión para permisos
 						cadena = (String) tablaAero.getValueAt(fila, 0);
 					avionselec = cadena;
-					
+
 					Infoavion secundaria = new Infoavion(control);
 					secundaria.setVisible(true);
-					
-					
-					//System.out.println(avionselec + "LA SELECCION FUNCIONA");
+
+					// System.out.println(avionselec + "LA SELECCION FUNCIONA");
 				}
 			}
 		});
 
 		add(scroll, BorderLayout.CENTER);
-		//model.fireTableDataChanged();
+		// model.fireTableDataChanged();
 	}
-	 
-	
-	/*//Método selección de vuelo
-	public void seleccionvuelo(String avionselec){
-		
-		for(int i = 0; i<control.listadoAviones.size();i++) {
-			
-			if(control.listadoAviones.elementAt(i).getSeleccion() == true) {
 
-				 control.listadoAviones.elementAt(i).setSeleccion(false);
-			}
-			
-		}	
+	/*
+	 * //Método selección de vuelo public void seleccionvuelo(String avionselec){
+	 * 
+	 * for(int i = 0; i<control.listadoAviones.size();i++) {
+	 * 
+	 * if(control.listadoAviones.elementAt(i).getSeleccion() == true) {
+	 * 
+	 * control.listadoAviones.elementAt(i).setSeleccion(false); }
+	 * 
+	 * }
+	 * 
+	 * for(int i = 0; i<control.listadoAviones.size();i++) {
+	 * 
+	 * if(avionselec.equalsIgnoreCase(control.listadoAviones.elementAt(i).getNombre(
+	 * ))) {
+	 * 
+	 * control.listadoAviones.elementAt(i).setSeleccion(true); }
+	 * 
+	 * }
+	 * 
+	 * }
+	 */
 
-		for(int i = 0; i<control.listadoAviones.size();i++) {
-			
-			if(avionselec.equalsIgnoreCase(control.listadoAviones.elementAt(i).getNombre())) {
-				
-				 control.listadoAviones.elementAt(i).setSeleccion(true);
-			}
-			
-		}	
-		
-	}*/
-
-	//MÉTODO PARA SACAR DATOS
+	// MÉTODO PARA SACAR DATOS
 	public void ponerenTabla() {
-		
-		
-		for(int i = 0; i < control.listadoAviones.size();i++) {
+
+		for (int i = 0; i < control.listadoAviones.size(); i++) {
 			String[] lista = new String[3];
-	
+
 			lista[0] = control.listadoAviones.elementAt(i).getNombre();
 			lista[1] = control.listadoAviones.elementAt(i).getOrigen();
 			lista[2] = control.listadoAviones.elementAt(i).getDestino();
-			
-			
+
 			model.addRow(lista);
-			
+
 		}
-		
-		
-		
+
 	}
-	
-	
 
 }
