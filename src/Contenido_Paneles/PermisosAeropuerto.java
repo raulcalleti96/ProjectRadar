@@ -12,9 +12,9 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
-import javax.swing.JTextField;
 
 import bilbao.Control;
+import dialogos.Cuentaatras;
 
 public class PermisosAeropuerto extends JPanel {
 
@@ -22,6 +22,7 @@ public class PermisosAeropuerto extends JPanel {
 
 	JTabbedPane PanelTerminal = new JTabbedPane();
 
+	
 	String rutaseleccionada;
 	int pistaseleccionada;
 	int indice;
@@ -30,6 +31,7 @@ public class PermisosAeropuerto extends JPanel {
 	JPanel puestaenmarcha = new JPanel();
 	JPanel despegue = new JPanel();
 	Control control = null;
+
 
 	public PermisosAeropuerto(Control control) {
 
@@ -184,7 +186,11 @@ public class PermisosAeropuerto extends JPanel {
 					
 					puestaenmarcha.add(mensaje2);
 					puestaenmarcha.add(mensajEspera);
-				
+					Cuentaatras.nuHora = 0;
+					Cuentaatras.nuMin = control.listadoAviones.elementAt(indice).tiempoEspera();
+					Cuentaatras.nuSeg = 0;
+					Cuentaatras Temporizador = new Cuentaatras(control);// Crear una Instancia de la clase
+					Temporizador.start();// inicializa el hilo
 				}else if(control.listadoAviones.elementAt(indice).getPista() == 35){
 					
 					mensaje2.setText(control.listadoAviones.elementAt(indice).getNombre() + " puesta en marcha y retroceso aprobado al "
@@ -193,7 +199,11 @@ public class PermisosAeropuerto extends JPanel {
 					mensajEspera.setText("Tiempo de espera: "+ control.listadoAviones.elementAt(indice).tiempoEspera()+ " minuto(s)");
 					puestaenmarcha.add(mensaje2);
 					puestaenmarcha.add(mensajEspera);
-					
+					Cuentaatras.nuHora = 0;
+					Cuentaatras.nuMin = control.listadoAviones.elementAt(indice).tiempoEspera();
+					Cuentaatras.nuSeg = 0;
+					Cuentaatras Temporizador = new Cuentaatras(control);// Crear una Instancia de la clase
+					Temporizador.start();// inicializa el hilo
 				}else if(control.listadoAviones.elementAt(indice).getPista() == 29){
 					
 					mensaje2.setText(control.listadoAviones.elementAt(indice).getNombre() + " puesta en marcha y retroceso aprobado al "
@@ -202,7 +212,11 @@ public class PermisosAeropuerto extends JPanel {
 					mensajEspera.setText("Tiempo de espera: "+ control.listadoAviones.elementAt(indice).tiempoEspera() + " minuto(s)");
 					puestaenmarcha.add(mensaje2);
 					puestaenmarcha.add(mensajEspera);
-					
+					Cuentaatras.nuHora = 0;
+					Cuentaatras.nuMin = control.listadoAviones.elementAt(indice).tiempoEspera();
+					Cuentaatras.nuSeg = 0;
+					Cuentaatras Temporizador = new Cuentaatras(control);// Crear una Instancia de la clase
+					Temporizador.start();// inicializa el hilo
 				}else if(control.listadoAviones.elementAt(indice).getPista() == 11){
 					
 					mensaje2.setText(control.listadoAviones.elementAt(indice).getNombre() + " puesta en marcha y retroceso aprobado al "
@@ -211,11 +225,14 @@ public class PermisosAeropuerto extends JPanel {
 					mensajEspera.setText("Tiempo de espera: "+ control.listadoAviones.elementAt(indice).tiempoEspera()+ " minuto(s)");
 					puestaenmarcha.add(mensaje2);
 					puestaenmarcha.add(mensajEspera);
-					
+					Cuentaatras.nuHora = 0;
+					Cuentaatras.nuMin = control.listadoAviones.elementAt(indice).tiempoEspera();
+					Cuentaatras.nuSeg = 0;
+					Cuentaatras Temporizador = new Cuentaatras(control);// Crear una Instancia de la clase
+					Temporizador.start();// inicializa el hilo
 				}
 				
-				
-				
+	
 
 			}
 		});
@@ -225,18 +242,41 @@ public class PermisosAeropuerto extends JPanel {
 	
 	public void despegue(int indice) {
 
+		
 		despegue.setBackground(Color.BLACK);
 		despegue.setLayout(new FlowLayout());
-		JLabel mensaje = new JLabel("Buenos días. Prueba para colocar todo en despegue.");
+		JLabel mensaje = new JLabel();		
 		JButton boton = new JButton("Enviar");
-		JLabel mensaje2 = new JLabel("Recibido. Prueba para colocar todo en motores.");
+		mensaje.setText(control.listadoAviones.elementAt(indice).getNombre() + " preparado para despegar.Esperando autorización...");
 		mensaje.setForeground(Color.white);
-
-		mensaje2.setForeground(Color.white);
+		mensaje.setForeground(Color.white);
+	
 
 		despegue.add(mensaje);
 		despegue.add(boton);
-		despegue.add(mensaje2);
+		despegue.add(mensaje);
+		
+			boton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					
+					if(control.listadoAviones.elementAt(0).getPreparadodespegue() == false) {
+						
+						//Aquí viene lo gordo
+						System.out.println("test");
+						control.listadoAviones.elementAt(0).setDespegar(true);
+						control.listadoAviones.remove(0);
+						
+	
+					}else {
+						
+						System.out.println("Ha perdido. Lo ha sacado antes");
+						
+					}
+					
+
+				}
+			});
+		
 		
 	}
 

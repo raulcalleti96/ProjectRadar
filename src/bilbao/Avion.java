@@ -12,6 +12,7 @@ public class Avion implements PermisosDespegue, PermisosAterrizaje {
 	private boolean radio = false;
 	private boolean rutaAsignada = false;
 	private boolean puestaenMarcha = false;
+	private boolean preparadodespegue = false;
 	private boolean despegar = false;
 	private boolean contacto = false;
 	private boolean apagado = false;
@@ -75,7 +76,7 @@ public class Avion implements PermisosDespegue, PermisosAterrizaje {
 		this.destino = destino;
 	}
 
-	public boolean setRutaAsignada() {
+	public boolean getRutaAsignada() {
 		return rutaAsignada;
 	}
 
@@ -123,50 +124,69 @@ public class Avion implements PermisosDespegue, PermisosAterrizaje {
 
 	}
 
-	public boolean pruebaRadio() {
-		Radar rBilbao = new Radar();
-
-		System.out.println("Muy buenas. Aquí " + nombre + " para prueba de radio");
-
-		if (rBilbao.pruebaRadio(nombre)) {
-			radio = true;
-			return true;
+	public String pruebaRadio() {
+		
+		String estado = " ";
+		
+		if(radio == true) {
+			
+			estado = " Aceptada";
+			
+		}else {
+			
+			estado = " Denegada";
 		}
-		return false;
+		
+		return estado;
+
 	}
 
-	public boolean asignarRuta() {
-		Radar rBilbao = new Radar();
-		System.out.println(nombre + " solicitamos ruta para " + destino);
-
-		if (rBilbao.asignarRuta(nombre, destino)) {
-			rutaAsignada = true;
-			return rutaAsignada;
+	public String asignarRuta() {
+		
+		String estado = " ";
+		
+		if(rutaAsignada == true) {
+			
+			estado = " Aceptada. Pista: " + pista;
+			
+		}else {
+			
+			estado = " Denegada";
 		}
-
-		return false;
+		
+		return estado;
+		
 	}
 
-	public boolean puestaenMarcha() {
-		Radar rBilbao = new Radar();
-		System.out.println("Listos para puesta en marcha y retroceso.");
-
-		if (rBilbao.puestaenMarcha(nombre)) {
-			puestaenMarcha = true;
-			return puestaenMarcha;
+	public String puestaenMarcha() {
+		
+	String estado = " ";
+		
+		if(puestaenMarcha == true) {
+			
+			estado = " Aceptada";
+			
+		}else {
+			
+			estado = " Denegada";
 		}
-		return false;
+		
+		return estado;
 	}
 
-	public boolean despegue() {
-		Radar rBilbao = new Radar();
-		System.out.println(nombre + " en punto de espera para despegar");
-
-		if (rBilbao.despegue(nombre)) {
-			despegar = true;
-			return despegar;
+	public String despegue() {
+		String estado = " ";
+		
+		if(despegar == true) {
+			
+			estado = " Aceptado";
+			
+		}else {
+			
+			estado = " Denegado";
 		}
-		return false;
+		
+		return estado;
 	}
 
 	public void checklistDespegue() {
@@ -323,6 +343,14 @@ public class Avion implements PermisosDespegue, PermisosAterrizaje {
 
 	public void setEspera(int espera) {
 		this.espera = espera;
+	}
+
+	public boolean getPreparadodespegue() {
+		return preparadodespegue;
+	}
+
+	public void setPreparadodespegue(boolean preparadodespegue) {
+		this.preparadodespegue = preparadodespegue;
 	}
 
 }

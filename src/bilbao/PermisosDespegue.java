@@ -2,8 +2,8 @@ package bilbao;
  public interface PermisosDespegue {
 	
 	 public void permisoDespegue();
-	 public boolean pruebaRadio();
-	 public boolean asignarRuta();
-	 public boolean puestaenMarcha();
-	 public boolean despegue();
+	 public String pruebaRadio();
+	 public String asignarRuta();
+	 public String puestaenMarcha();
+	 public String despegue();
 }

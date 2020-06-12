@@ -9,7 +9,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
 import bilbao.Control;
+import dialogos.Infoavion;
 
 public class TablalistaAvionesAeropuerto extends JPanel {
 
@@ -71,8 +73,8 @@ public class TablalistaAvionesAeropuerto extends JPanel {
 						cadena = (String) tablaAero.getValueAt(fila, 0);
 					avionselec = cadena;
 					
-					seleccionvuelo(avionselec);
-			
+					Infoavion secundaria = new Infoavion(control);
+					secundaria.setVisible(true);
 					
 					
 					//System.out.println(avionselec + "LA SELECCION FUNCIONA");
@@ -83,9 +85,9 @@ public class TablalistaAvionesAeropuerto extends JPanel {
 		add(scroll, BorderLayout.CENTER);
 		//model.fireTableDataChanged();
 	}
+	 
 	
-	
-	//Método selección de vuelo
+	/*//Método selección de vuelo
 	public void seleccionvuelo(String avionselec){
 		
 		for(int i = 0; i<control.listadoAviones.size();i++) {
@@ -106,7 +108,7 @@ public class TablalistaAvionesAeropuerto extends JPanel {
 			
 		}	
 		
-	}
+	}*/
 
 	//MÉTODO PARA SACAR DATOS
 	public void ponerenTabla() {

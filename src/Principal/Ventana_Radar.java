@@ -4,10 +4,13 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JSplitPane;
 import javax.swing.JTabbedPane;
 import javax.swing.UIManager;
+
 import Paneles.ImagenMapa;
 import Paneles.PanelAeropuerto;
 import Paneles.PanelRadar;
@@ -62,7 +65,7 @@ public class Ventana_Radar extends JFrame{
 		añadeGrid(info, 1, 0);
 		restricciones.gridwidth = 3;
 		añadeGrid(inferior, 0, 1);
-		
+		setIconImage (new ImageIcon("icono.png").getImage());
 		getContentPane().setBackground(Color.BLACK);
 	
 	}
