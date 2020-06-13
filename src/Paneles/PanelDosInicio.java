@@ -3,6 +3,7 @@ package Paneles;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.io.IOException;
 
 import javax.swing.JFrame;
@@ -16,12 +17,10 @@ public class PanelDosInicio extends JFrame{
 		setLayout(new BorderLayout());
 	
 		try {
-			getContentPane().add(new PanelInicio("Radartitle.png"),BorderLayout.CENTER);
+			getContentPane().add(new PanelInicio("Radartitle.png"),FlowLayout.CENTER);
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
-		
-		getContentPane().setBackground(Color.BLACK);
+		} 
 	}
 	
 	

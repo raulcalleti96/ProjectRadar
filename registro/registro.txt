@@ -127,3 +127,11 @@ Avión: VUE3245| Origen:BILBAO| Destino: LYON | Hora despegue: 14:9:48
 Avión: LU4954| Origen:BILBAO| Destino: MUNICH | Hora despegue: 14:9:48
 
 Avión: AE2325| Origen:BILBAO| Destino: MILAN | Hora despegue: 14:9:48
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 18:33:2
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 18:33:2
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 18:33:2
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 18:33:2

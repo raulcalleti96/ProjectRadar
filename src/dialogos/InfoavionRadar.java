@@ -35,9 +35,9 @@ public class InfoavionRadar extends JDialog {
 		// Etiqueta
 		JLabel nombre = new JLabel("Avión: " + control.llegadaAviones.elementAt(indice).getNombre());
 		JLabel pista = new JLabel("Pista: " + control.llegadaAviones.elementAt(indice).getPista());
-		JLabel contacto = new JLabel("Contacto: " + control.llegadaAviones.elementAt(indice).getContacto());
-		JLabel rodadura = new JLabel("Rodadura: " + control.llegadaAviones.elementAt(indice).getRodadura());
-		JLabel motores = new JLabel("Motores: " + control.llegadaAviones.elementAt(indice).getApagado());
+		JLabel contacto = new JLabel("Contacto: " + control.llegadaAviones.elementAt(indice).estadoContacto());
+		JLabel rodadura = new JLabel("Rodadura: " + control.llegadaAviones.elementAt(indice).estadoRodadura());
+		JLabel motores = new JLabel("Motores: " + control.llegadaAviones.elementAt(indice).motores());
 
 		nombre.setBounds(115, 60, 200, 30);
 		pista.setBounds(115, 60, 200, 30);
@@ -53,7 +53,7 @@ public class InfoavionRadar extends JDialog {
 	
 		
 	}
-	
+
 
 
 }

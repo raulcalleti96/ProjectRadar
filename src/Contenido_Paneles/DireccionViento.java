@@ -10,15 +10,15 @@ import javax.swing.Timer;
 public class DireccionViento extends JLabel implements ActionListener {
 
 	private static final long serialVersionUID = 1;
-	static int direccion = 0;
+	static int direccion = 1;
 
 	public DireccionViento() {
 
-		setText("Viento: NORTE ");
+		setText("Viento: SUR ");
 		Timer t = new Timer(10000, this);
 
 		t.start();
-
+ 
 	}
 
 	public void actionPerformed(ActionEvent e) {

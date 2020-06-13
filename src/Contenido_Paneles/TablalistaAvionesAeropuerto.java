@@ -26,7 +26,7 @@ public class TablalistaAvionesAeropuerto extends JPanel {
 
 	// Tabla Aeropuerto
 	final JTable tablaAero = new JTable(model) {
-
+ 
 		// Se configura la tabla como no editable
 		static final long serialVersionUID = 1;
 

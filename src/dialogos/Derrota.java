@@ -20,10 +20,10 @@ public class Derrota extends JDialog {
 
 		
 		setLayout(new FlowLayout());
-		setBounds(340, 210, 410, 210);
+		setBounds(340, 210, 310, 110);
 		seleccion();
 	}
-
+ 
 	public void seleccion() {
 		
 	

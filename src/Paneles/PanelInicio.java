@@ -22,7 +22,7 @@ public class PanelInicio extends JPanel {
 	JButton empezar = new JButton("Comenzar");
 
 	private Image imagen;
-
+ 
 	public PanelInicio(String ruta) throws IOException {
 
 		setLayout(new FlowLayout());

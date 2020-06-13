@@ -23,7 +23,7 @@ public class TablalistaAvionesRadar extends JPanel {
 	final int COLUMNAS = 3;
 	final DefaultTableModel model = new DefaultTableModel(NOMBRE_COL, FILAS);
 	Control control = null;
-
+ 
 	// Tabla Aeropuerto
 	final JTable tablaAero = new JTable(model) {
 

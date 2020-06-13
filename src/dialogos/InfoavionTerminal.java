@@ -16,7 +16,7 @@ public class InfoavionTerminal extends JDialog {
 
 		this.control = control;
 		setLayout(new FlowLayout());
-		setBounds(340, 210, 410, 210);
+		setBounds(340, 210, 310, 110);
 
 		seleccion(matricula);
 	}
@@ -36,9 +36,9 @@ public class InfoavionTerminal extends JDialog {
 		JLabel nombre = new JLabel("Avión: " + control.listadoAviones.elementAt(indice).getNombre());
 		JLabel radio = new JLabel("Radio: " + control.listadoAviones.elementAt(indice).pruebaRadio());
 		JLabel ruta = new JLabel("Pista: " + control.listadoAviones.elementAt(indice).getPista());
-		JLabel motores = new JLabel("Rodadura: " + control.listadoAviones.elementAt(indice).getRodadura());
-		JLabel despegue = new JLabel("Despegue: " + control.listadoAviones.elementAt(indice).despegue());
-
+		JLabel motores = new JLabel("Rodadura: " + control.listadoAviones.elementAt(indice).estadoRodadura());
+		JLabel despegue = new JLabel("Despegue: " + control.listadoAviones.elementAt(indice).motores());
+ 
 		nombre.setBounds(115, 60, 200, 30);
 		radio.setBounds(115, 60, 200, 30);
 		ruta.setBounds(115, 60, 200, 30);

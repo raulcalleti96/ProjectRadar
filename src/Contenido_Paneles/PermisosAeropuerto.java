@@ -120,6 +120,7 @@ public class PermisosAeropuerto extends JPanel {
 					+ control.listadoAviones.elementAt(0).getDestino());
 
 			JComboBox<Integer> pista = new JComboBox<Integer>();
+			pista.addItem(0);
 			pista.addItem(29);
 			pista.addItem(11);
 			pista.addItem(36);

@@ -30,8 +30,8 @@ import dialogos.Radio;
 public class Ventana_Radar extends JFrame {
 	private static final long serialVersionUID = 1L;
 	Control listadoAviones = new Control();
-	
-
+	 
+ 
 	// Reloj Y Registro
 	Reloj reloj = new Reloj();
 	RegistroDeTrafico rt = new RegistroDeTrafico();
@@ -95,7 +95,7 @@ public class Ventana_Radar extends JFrame {
 		pdi.setSize(700, 500);
 		pdi.setResizable(false);
 		pdi.setTitle("PANTALLA DE TITULO");
-		pdi.setLocation(300, 100);
+		pdi.setLocation(200, 100);
 		pdi.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		pdi.setUndecorated(true);
 		pdi.setVisible(true);

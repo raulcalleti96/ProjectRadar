@@ -5,7 +5,7 @@ public class Avion implements PermisosDespegue, PermisosAterrizaje {
 	private String nombre = null;
 	private String origen = null;
 	private String destino = null;
-	private String rodadura = null;
+	private String rodadura = " ";
 	private String horaDespegue= null;
 	private String horaAterrizaje= null;
 	private boolean seleccion = false;
@@ -218,23 +218,60 @@ public class Avion implements PermisosDespegue, PermisosAterrizaje {
 
 		return estado;
 	}
+ 
 
-	public String motores() {
+	
+	public String estadoContacto() {
 
 		String estado = " ";
 
-		if (apagado == true) {
+		if (contacto == true) {
 
-			estado = " Apagados";
+			estado = " Aceptado";
 
 		} else {
 
-			estado = " Encendidos";
+			estado = " Denegado";
 		}
 
 		return estado;
 
 	}
+	
+
+	public String estadoRodadura() {
+
+		String estado = " ";
+
+		if (rodadura == null) {
+
+			estado = "Ninguna";
+
+		} else {
+
+			estado = rodadura;
+		}
+
+		return estado;
+
+	}
+	public String motores() {
+
+		String estado = " ";
+
+		if (radio == true) {
+
+			estado = " Aceptada";
+
+		} else {
+
+			estado = " Denegada";
+		}
+
+		return estado;
+
+	}
+
 
 
 
@@ -251,6 +288,10 @@ public class Avion implements PermisosDespegue, PermisosAterrizaje {
 				+ horaAterrizaje;
 
 	}
+
+
+
+	
 	
 
 

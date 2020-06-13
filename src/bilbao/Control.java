@@ -10,7 +10,7 @@ public class Control {
 	public Vector<Avion> llegadaAviones = new Vector<Avion>(new MySql().listadollegadas());
 	public static boolean listadoVacio = false;
 	public static boolean llegadaVacio = false;
-
+ 
 	public void compruebalista() {
 		System.out.println(listadoVacio + "- " + llegadaVacio);
 		Victoria nueva;

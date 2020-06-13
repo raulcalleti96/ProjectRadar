@@ -74,6 +74,7 @@ public class PermisosRadar extends JPanel {
 			comprobar.setForeground(Color.white);
 			mensaje2.setForeground(Color.white);
 			JComboBox<Integer> pista = new JComboBox<Integer>();
+			pista.addItem(0);
 			pista.addItem(29);
 			pista.addItem(11);
 			pista.addItem(36);
@@ -166,7 +167,7 @@ public class PermisosRadar extends JPanel {
 
 						mensaje2.setText(control.llegadaAviones.elementAt(0).getNombre()
 								+ " recibido. Aterrizaje por el " + " NORTE " + " por rodadura "
-								+ control.listadoAviones.elementAt(0).getRodadura());
+								+ control.llegadaAviones.elementAt(0).getRodadura());
 
 						asignarodadura.add(mensaje2);
 
@@ -232,12 +233,12 @@ public class PermisosRadar extends JPanel {
 			int minutos = calendario.get(Calendar.MINUTE);
 			int segundos = calendario.get(Calendar.SECOND);
 			String horaDespegue = hora + ":" + minutos + ":" + segundos;
-			control.listadoAviones.elementAt(0).setHoraDespegue(horaDespegue);
+			control.llegadaAviones.elementAt(0).setHoraDespegue(horaDespegue);
 
 			boton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 
-					control.listadoAviones.elementAt(0).setApagado(true);
+					control.llegadaAviones.elementAt(0).setApagado(true);
 					escribeRegistro();
 					control.llegadaAviones.remove(0);
 					listaterminal.model.removeRow(0);
@@ -258,9 +259,9 @@ public class PermisosRadar extends JPanel {
 
 	public int seleccionado() {
 
-		for (int i = 0; i < control.listadoAviones.size(); i++) {
+		for (int i = 0; i < control.llegadaAviones.size(); i++) {
 
-			if (control.listadoAviones.elementAt(i).getSeleccion() == true) {
+			if (control.llegadaAviones.elementAt(i).getSeleccion() == true) {
 
 				return i;
 
@@ -315,7 +316,7 @@ public class PermisosRadar extends JPanel {
 			File fichero = new File("./registro/registro.txt");
 
 			bw = new BufferedWriter(new FileWriter(fichero, true));
-			bw.write("\n" + control.listadoAviones.elementAt(0).infoAvionDesText() + "\n");
+			bw.write("\n" + control.llegadaAviones.elementAt(0).infoAvionDesText() + "\n");
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
