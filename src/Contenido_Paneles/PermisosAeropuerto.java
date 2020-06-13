@@ -23,7 +23,6 @@ import bilbao.Avion;
 import bilbao.Control;
 import dialogos.Derrota;
 
-
 public class PermisosAeropuerto extends JPanel {
 
 	static final long serialVersionUID = 1;
@@ -37,7 +36,7 @@ public class PermisosAeropuerto extends JPanel {
 	JPanel puestaenmarcha = new JPanel();
 	JPanel despegue = new JPanel();
 	Control control = null;
-	
+
 	TablalistaAvionesAeropuerto listaterminal = null;
 
 	JLabel mensajeradio = new JLabel();
@@ -72,215 +71,238 @@ public class PermisosAeropuerto extends JPanel {
 	}
 
 	public void radio() {
+		try {
+			pruebaradio.setBackground(Color.BLACK);
+			pruebaradio.setLayout(new FlowLayout());
+			mensajeradio.setText("Hola. Prueba de radio de " + control.listadoAviones.elementAt(0).getNombre());
+			JCheckBox comprobar = new JCheckBox("Se escucha correctamente");
+			JButton boton = new JButton("Enviar");
+			JLabel mensaje2 = new JLabel(
+					"Recibido." + control.listadoAviones.elementAt(0).getNombre() + " le recibio correctamente.");
+			mensajeradio.setForeground(Color.white);
+			comprobar.setForeground(Color.white);
+			mensaje2.setForeground(Color.white);
 
-		pruebaradio.setBackground(Color.BLACK);
-		pruebaradio.setLayout(new FlowLayout());
-		mensajeradio.setText("Hola. Prueba de radio de " + control.listadoAviones.elementAt(0).getNombre());
-		JCheckBox comprobar = new JCheckBox("Se escucha correctamente");
-		JButton boton = new JButton("Enviar");
-		JLabel mensaje2 = new JLabel(
-				"Recibido." + control.listadoAviones.elementAt(0).getNombre() + " le recibio correctamente.");
-		mensajeradio.setForeground(Color.white);
-		comprobar.setForeground(Color.white);
-		mensaje2.setForeground(Color.white);
+			pruebaradio.add(mensajeradio);
+			pruebaradio.add(comprobar);
+			pruebaradio.add(boton);
 
-		pruebaradio.add(mensajeradio);
-		pruebaradio.add(comprobar);
-		pruebaradio.add(boton);
+			boton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
 
-		boton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+					if (comprobar.isSelected()) {
+						control.listadoAviones.elementAt(0).setRadio(true);
+						// System.out.println("3" + control.listadoAviones.elementAt(0).getRadio());
+						pruebaradio.add(mensaje2);
 
-				if (comprobar.isSelected()) {
-					control.listadoAviones.elementAt(0).setRadio(true);
-					// System.out.println("3" + control.listadoAviones.elementAt(0).getRadio());
-					pruebaradio.add(mensaje2);
+					}
 
 				}
+			});
+		} catch (ArrayIndexOutOfBoundsException e) {
+			PanelTerminal.setEnabledAt(0, false);
+			PanelTerminal.setEnabledAt(1, false);
+			PanelTerminal.setEnabledAt(2, false);
+			PanelTerminal.setEnabledAt(3, false);
+			Control.listadoVacio = true;
+			System.out.println(Control.listadoVacio +  " " + Control.llegadaVacio);
+			control.compruebalista();
 
-			}
-		});
+		}
 
 	}
 
 	public void ruta() {
+		try {
+			asignaruta.setBackground(Color.BLACK);
+			asignaruta.setLayout(new FlowLayout());
+			mensajeruta.setText(control.listadoAviones.elementAt(0).getNombre() + " solicitamos plan de vuelo para "
+					+ control.listadoAviones.elementAt(0).getDestino());
 
-		asignaruta.setBackground(Color.BLACK);
-		asignaruta.setLayout(new FlowLayout());
-		mensajeruta.setText(control.listadoAviones.elementAt(0).getNombre() + " solicitamos plan de vuelo para "
-				+ control.listadoAviones.elementAt(0).getDestino());
+			JComboBox<Integer> pista = new JComboBox<Integer>();
+			pista.addItem(29);
+			pista.addItem(11);
+			pista.addItem(36);
+			pista.addItem(18);
 
-		JComboBox<Integer> pista = new JComboBox<Integer>();
-		pista.addItem(29);
-		pista.addItem(11);
-		pista.addItem(35);
-		pista.addItem(18);
+			JButton boton = new JButton("Enviar");
 
-		JButton boton = new JButton("Enviar");
+			mensajeruta.setForeground(Color.white);
 
-		mensajeruta.setForeground(Color.white);
+			asignaruta.add(mensajeruta);
+			asignaruta.add(pista);
+			asignaruta.add(boton);
 
-		asignaruta.add(mensajeruta);
-		asignaruta.add(pista);
-		asignaruta.add(boton);
+			pista.addActionListener(new ActionListener() {
 
-		pista.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
 
-			public void actionPerformed(ActionEvent e) {
+					pistaseleccionada = (int) pista.getSelectedItem();
 
-				pistaseleccionada = (int) pista.getSelectedItem();
+				}
+			});
 
-			}
-		});
+			boton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					mensajerecibidoruta.setForeground(Color.white);
+					control.listadoAviones.elementAt(0).setPista(pistaseleccionada);
+					mensajerecibidoruta.setText(control.listadoAviones.elementAt(0).getNombre() + " autorizado para "
+							+ control.listadoAviones.elementAt(0).getDestino() + ".Plan de vuelo. Pista "
+							+ control.listadoAviones.elementAt(0).getPista());
+					asignaruta.add(mensajerecibidoruta);
+					compruebaviento(control.listadoAviones.elementAt(0));
+					updateUI();
 
-		boton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				mensajerecibidoruta.setForeground(Color.white);
-				control.listadoAviones.elementAt(0).setPista(pistaseleccionada);	
-				mensajerecibidoruta.setText(control.listadoAviones.elementAt(0).getNombre() + " autorizado para "
-						+ control.listadoAviones.elementAt(0).getDestino() + ".Plan de vuelo. Pista "
-						+ control.listadoAviones.elementAt(0).getPista());
-				asignaruta.add(mensajerecibidoruta);
-				compruebaviento(control.llegadaAviones.elementAt(0));
-				updateUI();
+				}
+			});
+		} catch (ArrayIndexOutOfBoundsException e) {
+			PanelTerminal.setEnabledAt(0, false);
+			PanelTerminal.setEnabledAt(1, false);
+			PanelTerminal.setEnabledAt(2, false);
+			PanelTerminal.setEnabledAt(3, false);
+			Control.listadoVacio = true;
+			System.out.println(Control.listadoVacio +  " " + Control.llegadaVacio);
+			control.compruebalista();
 
-			}
-		});
+		}
 
 	}
 
 	public void motores() {
+		try {
+			puestaenmarcha.setBackground(Color.BLACK);
+			puestaenmarcha.setLayout(new FlowLayout());
+			mensajemarcha.setText(
+					control.listadoAviones.elementAt(0).getNombre() + " listos para puesta en marcha y retroceso.");
+			JButton boton = new JButton("Enviar");
+			JLabel mensajerecibidomarcha = new JLabel();
 
-		puestaenmarcha.setBackground(Color.BLACK);
-		puestaenmarcha.setLayout(new FlowLayout());
-		mensajemarcha.setText(
-				control.listadoAviones.elementAt(0).getNombre() + " listos para puesta en marcha y retroceso.");
-		JButton boton = new JButton("Enviar");
-		JLabel mensajerecibidomarcha = new JLabel();
+			JComboBox<String> rodadura = new JComboBox<String>();
+			rodadura.addItem("E2");
+			rodadura.addItem("Y2");
+			rodadura.addItem("A1");
+			rodadura.addItem("C2");
 
-		JComboBox<String> rodadura = new JComboBox<String>();
-		rodadura.addItem("E2");
-		rodadura.addItem("Y2");
-		rodadura.addItem("A1");
-		rodadura.addItem("C2");
+			mensajemarcha.setForeground(Color.white);
+			mensajerecibidomarcha.setForeground(Color.white);
 
-		mensajemarcha.setForeground(Color.white);
-		mensajerecibidomarcha.setForeground(Color.white);
+			puestaenmarcha.add(mensajemarcha);
+			puestaenmarcha.add(rodadura);
+			puestaenmarcha.add(boton);
+			puestaenmarcha.add(mensajerecibidomarcha);
 
-		puestaenmarcha.add(mensajemarcha);
-		puestaenmarcha.add(rodadura);
-		puestaenmarcha.add(boton);
-		puestaenmarcha.add(mensajerecibidomarcha);
+			rodadura.addActionListener(new ActionListener() {
 
-		rodadura.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
 
-			public void actionPerformed(ActionEvent e) {
+					rutaseleccionada = (String) rodadura.getSelectedItem();
 
-				rutaseleccionada = (String) rodadura.getSelectedItem();
+				}
+			});
 
-			}
-		});
+			boton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					mensajerecibidomarcha.setForeground(Color.white);
+					control.listadoAviones.elementAt(0).setRodadura(rutaseleccionada);
 
-		boton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				mensajerecibidomarcha.setForeground(Color.white);
-				control.listadoAviones.elementAt(0).setRodadura(rutaseleccionada);
+					if (control.listadoAviones.elementAt(0).getPista() == 18) {
 
-				if (control.listadoAviones.elementAt(0).getPista() == 18) {
+						mensajerecibidomarcha.setText(control.listadoAviones.elementAt(0).getNombre()
+								+ " puesta en marcha y retroceso aprobado al " + " NORTE " + " por rodadura "
+								+ control.listadoAviones.elementAt(0).getRodadura());
 
-					mensajerecibidomarcha.setText(control.listadoAviones.elementAt(0).getNombre()
-							+ " puesta en marcha y retroceso aprobado al " + " NORTE " + " por rodadura "
-							+ control.listadoAviones.elementAt(0).getRodadura());
+						puestaenmarcha.add(mensajerecibidomarcha);
 
-					puestaenmarcha.add(mensajerecibidomarcha);
+						PanelTerminal.setEnabledAt(3, true);
+					} else if (control.listadoAviones.elementAt(0).getPista() == 36) {
 
-					/*
-					 * Cuentaatras.nuHora = 0; Cuentaatras.nuMin =
-					 * control.listadoAviones.elementAt(0).tiempoEspera(); Cuentaatras.nuSeg = 0;
-					 * Temporizador.start();// inicializa el hilo
-					 */
-					PanelTerminal.setEnabledAt(3, true);
-				} else if (control.listadoAviones.elementAt(0).getPista() == 35) {
+						mensajerecibidomarcha.setText(control.listadoAviones.elementAt(0).getNombre()
+								+ " puesta en marcha y retroceso aprobado al " + " SUR " + " por rodadura "
+								+ control.listadoAviones.elementAt(0).getRodadura());
 
-					mensajerecibidomarcha.setText(control.listadoAviones.elementAt(0).getNombre()
-							+ " puesta en marcha y retroceso aprobado al " + " SUR " + " por rodadura "
-							+ control.listadoAviones.elementAt(0).getRodadura());
+						puestaenmarcha.add(mensajerecibidomarcha);
 
-					puestaenmarcha.add(mensajerecibidomarcha);
+						/*
+						 * Cuentaatras.nuHora = 0; Cuentaatras.nuMin =
+						 * control.listadoAviones.elementAt(0).tiempoEspera(); Cuentaatras.nuSeg = 0;
+						 * Temporizador.start();// inicializa el hilo
+						 */
+						PanelTerminal.setEnabledAt(3, true);
+					} else if (control.listadoAviones.elementAt(0).getPista() == 29) {
 
-					/*
-					 * Cuentaatras.nuHora = 0; Cuentaatras.nuMin =
-					 * control.listadoAviones.elementAt(0).tiempoEspera(); Cuentaatras.nuSeg = 0;
-					 * Temporizador.start();// inicializa el hilo
-					 */
-					PanelTerminal.setEnabledAt(3, true);
-				} else if (control.listadoAviones.elementAt(0).getPista() == 29) {
+						mensajerecibidomarcha.setText(control.listadoAviones.elementAt(0).getNombre()
+								+ " puesta en marcha y retroceso aprobado al " + " ESTE " + " por rodadura "
+								+ control.listadoAviones.elementAt(0).getRodadura());
 
-					mensajerecibidomarcha.setText(control.listadoAviones.elementAt(0).getNombre()
-							+ " puesta en marcha y retroceso aprobado al " + " ESTE " + " por rodadura "
-							+ control.listadoAviones.elementAt(0).getRodadura());
+						puestaenmarcha.add(mensajerecibidomarcha);
 
-					puestaenmarcha.add(mensajerecibidomarcha);
+						PanelTerminal.setEnabledAt(3, true);
+					} else if (control.listadoAviones.elementAt(0).getPista() == 11) {
 
-					/*
-					 * Cuentaatras.nuHora = 0; Cuentaatras.nuMin =
-					 * control.listadoAviones.elementAt(0).tiempoEspera(); Cuentaatras.nuSeg = 0;
-					 * 
-					 * Temporizador.start();// inicializa el hilo
-					 */
-					PanelTerminal.setEnabledAt(3, true);
-				} else if (control.listadoAviones.elementAt(0).getPista() == 11) {
+						mensajerecibidomarcha.setText(control.listadoAviones.elementAt(0).getNombre()
+								+ " puesta en marcha y retroceso aprobado al " + " OESTE " + " por rodadura "
+								+ control.listadoAviones.elementAt(0).getRodadura());
 
-					mensajerecibidomarcha.setText(control.listadoAviones.elementAt(0).getNombre()
-							+ " puesta en marcha y retroceso aprobado al " + " OESTE " + " por rodadura "
-							+ control.listadoAviones.elementAt(0).getRodadura());
+						puestaenmarcha.add(mensajerecibidomarcha);
 
-					puestaenmarcha.add(mensajerecibidomarcha);
+						PanelTerminal.setEnabledAt(3, true);
+					}
 
-					/*
-					 * Cuentaatras.nuHora = 0; Cuentaatras.nuMin =
-					 * control.listadoAviones.elementAt(0).tiempoEspera(); Cuentaatras.nuSeg = 0;
-					 * 
-					 * Temporizador.start();// inicializa el hilo
-					 */
-					PanelTerminal.setEnabledAt(3, true);
-				}				
-			
-			}
-		});
+				}
+			});
+		} catch (ArrayIndexOutOfBoundsException e) {
+			PanelTerminal.setEnabledAt(0, false);
+			PanelTerminal.setEnabledAt(1, false);
+			PanelTerminal.setEnabledAt(2, false);
+			PanelTerminal.setEnabledAt(3, false);
+			Control.listadoVacio = true;
+			System.out.println(Control.listadoVacio +  " " + Control.llegadaVacio);
+			control.compruebalista();
+
+		}
 	}
 
 	public void despegue() {
+		try {
+			despegue.setBackground(Color.BLACK);
+			despegue.setLayout(new FlowLayout());
+			JLabel mensaje = new JLabel();
+			JButton boton = new JButton("Enviar");
+			mensaje.setText(control.listadoAviones.elementAt(0).getNombre()
+					+ " preparado para despegar.Esperando autorización...");
+			mensaje.setForeground(Color.white);
+			mensaje.setForeground(Color.white);
 
-		despegue.setBackground(Color.BLACK);
-		despegue.setLayout(new FlowLayout());
-		JLabel mensaje = new JLabel();
-		JButton boton = new JButton("Enviar");
-		mensaje.setText(
-				control.listadoAviones.elementAt(0).getNombre() + " preparado para despegar.Esperando autorización...");
-		mensaje.setForeground(Color.white);
-		mensaje.setForeground(Color.white);
+			despegue.add(mensaje);
+			despegue.add(boton);
+			despegue.add(mensaje);
 
-		despegue.add(mensaje);
-		despegue.add(boton);
-		despegue.add(mensaje);
+			boton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
 
-		boton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+					int hora = calendario.get(Calendar.HOUR_OF_DAY);
+					int minutos = calendario.get(Calendar.MINUTE);
+					int segundos = calendario.get(Calendar.SECOND);
+					String horaDespegue = hora + ":" + minutos + ":" + segundos;
+					control.listadoAviones.elementAt(0).setHoraDespegue(horaDespegue);
 
-				int hora = calendario.get(Calendar.HOUR_OF_DAY);
-				int minutos = calendario.get(Calendar.MINUTE);
-				int segundos = calendario.get(Calendar.SECOND);
-				String horaDespegue = hora + ":" + minutos + ":" + segundos;
-				control.listadoAviones.elementAt(0).setHoraDespegue(horaDespegue);
-			
-				escribeRegistro();
-				control.listadoAviones.remove(0);
-				listaterminal.model.removeRow(0);
-				actualiza();
+					escribeRegistro();
+					control.listadoAviones.remove(0);
+					listaterminal.model.removeRow(0);
+					actualiza();
 
-			}
-		});
+				}
+			});
+		} catch (ArrayIndexOutOfBoundsException e) {
+			PanelTerminal.setEnabledAt(0, false);
+			PanelTerminal.setEnabledAt(1, false);
+			PanelTerminal.setEnabledAt(2, false);
+			PanelTerminal.setEnabledAt(3, false);
+			Control.listadoVacio = true;
+			System.out.println(Control.listadoVacio +  " " + Control.llegadaVacio);
+			control.compruebalista();
+
+		}
 
 	}
 
@@ -295,32 +317,35 @@ public class PermisosAeropuerto extends JPanel {
 		motores();
 		despegue.removeAll();
 		despegue();
-
+		PanelTerminal.setEnabledAt(3, false);
 		updateUI();
 
 	}
+
 	public void compruebaviento(Avion avion) {
 		Derrota derrota;
-		if(DireccionViento.direccion == 0 && avion.getPista() != 18) {
-			
-			 derrota = new Derrota();
-			 derrota.setVisible(true);
-			
-		}else if(DireccionViento.direccion == 1 && avion.getPista() != 36) {
-			
-			 derrota = new Derrota();
-			 derrota.setVisible(true);
-		}else if(DireccionViento.direccion == 2 && avion.getPista() != 29) {
-			
-			 derrota = new Derrota();
-			 derrota.setVisible(true);
-		}else if(DireccionViento.direccion == 3 && avion.getPista() != 11) {
-			
-			 derrota = new Derrota();
-			 derrota.setVisible(true);
-		
+		System.out.println(DireccionViento.direccion + "-" + avion.getPista());
+		if (DireccionViento.direccion == 0 && avion.getPista() != 18) {
+
+			derrota = new Derrota();
+			derrota.setVisible(true);
+
+		} else if (DireccionViento.direccion == 1 && avion.getPista() != 36) {
+
+			derrota = new Derrota();
+			derrota.setVisible(true);
+		} else if (DireccionViento.direccion == 2 && avion.getPista() != 29) {
+
+			derrota = new Derrota();
+			derrota.setVisible(true);
+		} else if (DireccionViento.direccion == 3 && avion.getPista() != 11) {
+
+			derrota = new Derrota();
+			derrota.setVisible(true);
+
 		}
 	}
+
 	public void escribeRegistro() {
 
 		BufferedWriter bw = null;

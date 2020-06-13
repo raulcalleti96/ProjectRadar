@@ -21,3 +21,109 @@ Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 5:31:39
 Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 5:31:39
 
 Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 5:31:39
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 13:2:36
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 13:2:36
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 13:2:36
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 13:2:36
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 13:8:58
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 13:8:58
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 13:8:58
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 13:8:58
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 13:10:52
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 13:10:52
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 13:10:52
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 13:10:52
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 13:13:4
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 13:13:4
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 13:13:4
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 13:13:4
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 13:18:26
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 13:34:18
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 13:34:18
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 13:34:18
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 13:34:18
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 13:43:40
+
+Avión: VUE3245| Origen:BILBAO| Destino: LYON | Hora despegue: 13:43:40
+
+Avión: LU4954| Origen:BILBAO| Destino: MUNICH | Hora despegue: 13:43:40
+
+Avión: AE2325| Origen:BILBAO| Destino: MILAN | Hora despegue: 13:43:40
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 13:43:40
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 13:43:40
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 13:43:40
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 13:43:40
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 13:51:57
+
+Avión: VUE3245| Origen:BILBAO| Destino: LYON | Hora despegue: 13:51:57
+
+Avión: LU4954| Origen:BILBAO| Destino: MUNICH | Hora despegue: 13:51:57
+
+Avión: AE2325| Origen:BILBAO| Destino: MILAN | Hora despegue: 13:51:57
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 13:51:57
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 13:51:57
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 13:51:57
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 13:51:57
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 13:58:18
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 13:58:18
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 13:58:18
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 13:58:18
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 13:58:18
+
+Avión: VUE3245| Origen:BILBAO| Destino: LYON | Hora despegue: 13:58:18
+
+Avión: LU4954| Origen:BILBAO| Destino: MUNICH | Hora despegue: 13:58:18
+
+Avión: AE2325| Origen:BILBAO| Destino: MILAN | Hora despegue: 13:58:18
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 14:9:48
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 14:9:48
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 14:9:48
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 14:9:48
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 14:9:48
+
+Avión: VUE3245| Origen:BILBAO| Destino: LYON | Hora despegue: 14:9:48
+
+Avión: LU4954| Origen:BILBAO| Destino: MUNICH | Hora despegue: 14:9:48
+
+Avión: AE2325| Origen:BILBAO| Destino: MILAN | Hora despegue: 14:9:48

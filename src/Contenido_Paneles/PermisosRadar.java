@@ -24,6 +24,7 @@ import bilbao.Control;
 import dialogos.Derrota;
 
 
+
 public class PermisosRadar extends JPanel  {
 
 	static final long serialVersionUID = 1;
@@ -49,7 +50,7 @@ public class PermisosRadar extends JPanel  {
 		contacto();
 		rodadura();
 		apagadoMotores();
-
+ 
 		// Añadimos los paneles al JTABBED
 		PanelRadar.add("CONTACTO", contacto);
 		PanelRadar.add("RODADURA", asignarodadura);
@@ -60,11 +61,13 @@ public class PermisosRadar extends JPanel  {
 	}
 
 	public void contacto() {
-
+		
+		try {		
 		contacto.setBackground(Color.BLACK);
 		contacto.setLayout(new FlowLayout());
-		JLabel mensajeradio = new JLabel(
-				"Hola." + " aquí " + control.llegadaAviones.elementAt(0).getNombre() + " establecido contacto ILS ");
+		
+		JLabel mensajeradio = new JLabel("Hola." + " aquí " + control.llegadaAviones.elementAt(0).getNombre() + " establecido contacto ILS ");
+		
 		JCheckBox comprobar = new JCheckBox("AUTORIZAR");
 		JButton boton = new JButton("Enviar");
 		JLabel mensaje2 = new JLabel();
@@ -109,12 +112,21 @@ public class PermisosRadar extends JPanel  {
 
 			}
 		});
-
+		}catch(ArrayIndexOutOfBoundsException e) {
+			PanelRadar.setEnabledAt(0, false);
+			PanelRadar.setEnabledAt(1, false);
+			PanelRadar.setEnabledAt(2, false);
+			Control.llegadaVacio = true;
+			System.out.println(Control.listadoVacio +  " " + Control.llegadaVacio);
+			control.compruebalista();
+		
+		}
 	}
 
 	// Asigna rodadura
 	public void rodadura() {
-
+		
+		try {
 		asignarodadura.setBackground(Color.BLACK);
 		asignarodadura.setLayout(new FlowLayout());
 		JLabel mensaje = new JLabel(
@@ -158,7 +170,7 @@ public class PermisosRadar extends JPanel  {
 					asignarodadura.add(mensaje2);
 
 					PanelRadar.setEnabledAt(2, true);
-				} else if (control.llegadaAviones.elementAt(0).getPista() == 35) {
+				} else if (control.llegadaAviones.elementAt(0).getPista() == 36) {
 
 					mensaje2.setText(control.llegadaAviones.elementAt(0).getNombre() + " recibido. Aterrizaje por el  "
 							+ " SUR " + " por rodadura " + control.llegadaAviones.elementAt(0).getRodadura());
@@ -186,10 +198,20 @@ public class PermisosRadar extends JPanel  {
 			
 			}
 		});
+		}catch(ArrayIndexOutOfBoundsException e) {
+			PanelRadar.setEnabledAt(0, false);
+			PanelRadar.setEnabledAt(1, false);
+			PanelRadar.setEnabledAt(2, false);
+			Control.llegadaVacio = true;
+			System.out.println(Control.listadoVacio +  " " + Control.llegadaVacio);
+			control.compruebalista();
+		
+		}
 	}
 
 	public void apagadoMotores() {
 
+		try {
 		apagadoMotores.setBackground(Color.BLACK);
 		apagadoMotores.setLayout(new FlowLayout());
 		JLabel mensaje = new JLabel(
@@ -219,6 +241,15 @@ public class PermisosRadar extends JPanel  {
 
 			}
 		});
+		}catch(ArrayIndexOutOfBoundsException e) {
+			PanelRadar.setEnabledAt(0, false);
+			PanelRadar.setEnabledAt(1, false);
+			PanelRadar.setEnabledAt(2, false);
+			Control.llegadaVacio = true;
+			System.out.println(Control.listadoVacio +  " " + Control.llegadaVacio);
+			control.compruebalista();
+		
+		}
 	}
 
 	public int seleccionado() {
@@ -239,14 +270,16 @@ public class PermisosRadar extends JPanel  {
 		contacto.removeAll();
 		contacto();
 		asignarodadura.removeAll();
-		;
+		
 		rodadura();
 		apagadoMotores.removeAll();
 		apagadoMotores();
-
+		PanelRadar.setEnabledAt(2, false);
 		updateUI();
 
 	}
+	
+	
 	
 	public void compruebaviento(Avion avion) {
 		Derrota derrota;
