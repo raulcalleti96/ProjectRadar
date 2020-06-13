@@ -1,52 +1,70 @@
 package Contenido_Paneles;
 
-import javax.swing.*;
-
-import bilbao.Control;
-import dialogos.Cuentaatras;
-
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
-public class PermisosRadar extends JPanel {
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
+
+import bilbao.Avion;
+import bilbao.Control;
+import dialogos.Derrota;
+
+
+public class PermisosRadar extends JPanel  {
 
 	static final long serialVersionUID = 1;
 
 	JTabbedPane PanelRadar = new JTabbedPane();
 	String rutaseleccionada;
 	int pistaseleccionada;
-	int indice;
 	JPanel contacto = new JPanel();
 	JPanel asignarodadura = new JPanel();
 	JPanel apagadoMotores = new JPanel();
 	Control control = null;
+	TablalistaAvionesRadar listaterminal = null;
 
-	public PermisosRadar(Control control) {
+	Calendar calendario = new GregorianCalendar();
+
+	public PermisosRadar(Control control, TablalistaAvionesRadar listaterminal) {
+	
+		this.listaterminal = listaterminal;
 		this.control = control;
 		setLayout(new BorderLayout());
 		setBackground(Color.BLACK);
-		
-		contacto(seleccionado());
-		rodadura(seleccionado());
-		apagadoMotores(seleccionado());
-		
+
+		contacto();
+		rodadura();
+		apagadoMotores();
 
 		// Añadimos los paneles al JTABBED
 		PanelRadar.add("CONTACTO", contacto);
 		PanelRadar.add("RODADURA", asignarodadura);
 		PanelRadar.add("APAGADO MOTORES", apagadoMotores);
-
+		PanelRadar.setEnabledAt(2, false);
 		add(PanelRadar, BorderLayout.CENTER);
 
 	}
 
-	public void contacto(int indice) {
+	public void contacto() {
 
 		contacto.setBackground(Color.BLACK);
 		contacto.setLayout(new FlowLayout());
-		JLabel mensajeradio = new JLabel("Buenos días" + " aquí " + control.llegadaAviones.elementAt(indice).getNombre()
-				+ " establecido contacto ILS ");
+		JLabel mensajeradio = new JLabel(
+				"Hola." + " aquí " + control.llegadaAviones.elementAt(0).getNombre() + " establecido contacto ILS ");
 		JCheckBox comprobar = new JCheckBox("AUTORIZAR");
 		JButton boton = new JButton("Enviar");
 		JLabel mensaje2 = new JLabel();
@@ -77,12 +95,15 @@ public class PermisosRadar extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 
 				if (comprobar.isSelected()) {
-					control.llegadaAviones.elementAt(indice).setContacto(true);
-					control.llegadaAviones.elementAt(indice).setPista(pistaseleccionada);
-					System.out.println("3" + control.llegadaAviones.elementAt(indice).getContacto());
-					mensaje2.setText(" Recibido " + control.llegadaAviones.elementAt(indice).getNombre() + ".Pista:"
-				+ control.llegadaAviones.elementAt(indice).getPista() + " autorizado para aterrizar.");
+					control.llegadaAviones.elementAt(0).setContacto(true);
+					control.llegadaAviones.elementAt(0).setPista(pistaseleccionada);		
+					System.out.println("3" + control.llegadaAviones.elementAt(0).getContacto());
+					mensaje2.setText(" Recibido " + control.llegadaAviones.elementAt(0).getNombre() + ".Pista:"
+							+ control.llegadaAviones.elementAt(0).getPista() + " autorizado para aterrizar.");
 					contacto.add(mensaje2);
+					
+					compruebaviento(control.llegadaAviones.elementAt(0));
+					
 					updateUI();
 				}
 
@@ -92,15 +113,15 @@ public class PermisosRadar extends JPanel {
 	}
 
 	// Asigna rodadura
-	public void rodadura(int indice) {
+	public void rodadura() {
 
 		asignarodadura.setBackground(Color.BLACK);
 		asignarodadura.setLayout(new FlowLayout());
 		JLabel mensaje = new JLabel(
-				control.llegadaAviones.elementAt(indice).getNombre() + " solicitamos pista de rodadura. ");
+				control.llegadaAviones.elementAt(0).getNombre() + " solicitamos pista de rodadura. ");
 		JButton boton = new JButton("Enviar");
 		JLabel mensaje2 = new JLabel();
-		JLabel mensajEspera = new JLabel();
+
 		JComboBox<String> rodadura = new JComboBox<String>();
 		rodadura.addItem("E2");
 		rodadura.addItem("Y2");
@@ -109,13 +130,11 @@ public class PermisosRadar extends JPanel {
 
 		mensaje.setForeground(Color.white);
 		mensaje2.setForeground(Color.white);
-		mensajEspera.setForeground(Color.WHITE);
 
 		asignarodadura.add(mensaje);
 		asignarodadura.add(rodadura);
 		asignarodadura.add(boton);
 		asignarodadura.add(mensaje2);
-		asignarodadura.add(mensajEspera);
 
 		rodadura.addActionListener(new ActionListener() {
 
@@ -129,93 +148,79 @@ public class PermisosRadar extends JPanel {
 		boton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				mensaje2.setForeground(Color.white);
-				control.llegadaAviones.elementAt(indice).setRodadura(rutaseleccionada);
+				control.llegadaAviones.elementAt(0).setRodadura(rutaseleccionada);
+				
+				if (control.llegadaAviones.elementAt(0).getPista() == 18) {
 
-				if (control.llegadaAviones.elementAt(indice).getPista() == 18) {
-
-					mensaje2.setText(control.llegadaAviones.elementAt(indice).getNombre()
-							+ " recibido. Aterrizaje por el " + " NORTE " + " por rodadura "
-							+ control.listadoAviones.elementAt(indice).getRodadura());
-					mensajEspera.setText("Tiempo de espera: " + control.llegadaAviones.elementAt(indice).tiempoEspera()
-							+ " minuto(s)");
+					mensaje2.setText(control.llegadaAviones.elementAt(0).getNombre() + " recibido. Aterrizaje por el "
+							+ " NORTE " + " por rodadura " + control.listadoAviones.elementAt(0).getRodadura());
 
 					asignarodadura.add(mensaje2);
-					asignarodadura.add(mensajEspera);
-					Cuentaatras.nuHora = 0;
-					Cuentaatras.nuMin = control.llegadaAviones.elementAt(indice).tiempoEspera();
-					Cuentaatras.nuSeg = 0;
-					Cuentaatras Temporizador = new Cuentaatras(control);// Crear una Instancia de la clase
-					Temporizador.start();// inicializa el hilo
-				} else if (control.llegadaAviones.elementAt(indice).getPista() == 35) {
 
-					mensaje2.setText(control.llegadaAviones.elementAt(indice).getNombre()
-							+ " recibido. Aterrizaje por el  " + " SUR " + " por rodadura "
-							+ control.llegadaAviones.elementAt(indice).getRodadura());
-					mensajEspera.setText("Tiempo de espera: " + control.llegadaAviones.elementAt(indice).tiempoEspera()
-							+ " minuto(s)");
+					PanelRadar.setEnabledAt(2, true);
+				} else if (control.llegadaAviones.elementAt(0).getPista() == 35) {
+
+					mensaje2.setText(control.llegadaAviones.elementAt(0).getNombre() + " recibido. Aterrizaje por el  "
+							+ " SUR " + " por rodadura " + control.llegadaAviones.elementAt(0).getRodadura());
+
 					asignarodadura.add(mensaje2);
-					asignarodadura.add(mensajEspera);
-					Cuentaatras.nuHora = 0;
-					Cuentaatras.nuMin = control.llegadaAviones.elementAt(indice).tiempoEspera();
-					Cuentaatras.nuSeg = 0;
-					Cuentaatras Temporizador = new Cuentaatras(control);// Crear una Instancia de la clase
-					Temporizador.start();// inicializa el hilo
-				} else if (control.llegadaAviones.elementAt(indice).getPista() == 29) {
 
-					mensaje2.setText(control.llegadaAviones.elementAt(indice).getNombre()
-							+ "  recibido. Aterrizaje por el  " + " ESTE " + " por rodadura "
-							+ control.llegadaAviones.elementAt(indice).getRodadura());
-					mensajEspera.setText("Tiempo de espera: " + control.llegadaAviones.elementAt(indice).tiempoEspera()
-							+ " minuto(s)");
+					PanelRadar.setEnabledAt(2, true);
+				} else if (control.llegadaAviones.elementAt(0).getPista() == 29) {
+
+					mensaje2.setText(control.llegadaAviones.elementAt(0).getNombre() + "  recibido. Aterrizaje por el  "
+							+ " ESTE " + " por rodadura " + control.llegadaAviones.elementAt(0).getRodadura());
+
 					asignarodadura.add(mensaje2);
-					asignarodadura.add(mensajEspera);
 
-				} else if (control.llegadaAviones.elementAt(indice).getPista() == 11) {
+					PanelRadar.setEnabledAt(2, true);
+				} else if (control.llegadaAviones.elementAt(0).getPista() == 11) {
 
-					mensaje2.setText(control.llegadaAviones.elementAt(indice).getNombre()
-							+ "  recibido. Aterrizaje por el  " + " OESTE " + " por rodadura "
-							+ control.llegadaAviones.elementAt(indice).getRodadura());
-					mensajEspera.setText("Tiempo de espera: " + control.llegadaAviones.elementAt(indice).tiempoEspera()
-							+ " minuto(s)");
+					mensaje2.setText(control.llegadaAviones.elementAt(0).getNombre() + "  recibido. Aterrizaje por el  "
+							+ " OESTE " + " por rodadura " + control.llegadaAviones.elementAt(0).getRodadura());
+
 					asignarodadura.add(mensaje2);
-					asignarodadura.add(mensajEspera);
 
+					PanelRadar.setEnabledAt(2, true);
 				}
-
+			
 			}
 		});
 	}
 
-	public void apagadoMotores(int indice) {
+	public void apagadoMotores() {
 
 		apagadoMotores.setBackground(Color.BLACK);
 		apagadoMotores.setLayout(new FlowLayout());
-		JLabel mensaje = new JLabel();
-		JButton boton = new JButton("Enviar");
-	
+		JLabel mensaje = new JLabel(
+				control.llegadaAviones.elementAt(0).getNombre() + " apagado de motores. Hasta Pronto");
+		JButton boton = new JButton("Estacionado");
+
 		mensaje.setForeground(Color.white);
 		mensaje.setForeground(Color.white);
 
 		apagadoMotores.add(mensaje);
 		apagadoMotores.add(boton);
-		apagadoMotores.add(mensaje);
+
+		int hora = calendario.get(Calendar.HOUR_OF_DAY);
+		int minutos = calendario.get(Calendar.MINUTE);
+		int segundos = calendario.get(Calendar.SECOND);
+		String horaDespegue = hora + ":" + minutos + ":" + segundos;
+		control.listadoAviones.elementAt(0).setHoraDespegue(horaDespegue);
 
 		boton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
 				
-					mensaje.setText(control.llegadaAviones.elementAt(indice).getNombre()
-							+ " apagado de motores. Hasta Pronto");
-					// Aquí viene lo gordo
-					System.out.println("test");
-					control.llegadaAviones.elementAt(0).setDespegar(true);
-					control.llegadaAviones.remove(0);
-
-				
+				control.listadoAviones.elementAt(0).setApagado(true);
+				escribeRegistro();
+				control.llegadaAviones.remove(0);
+				listaterminal.model.removeRow(0);
+				actualiza();
 
 			}
 		});
 	}
+
 	public int seleccionado() {
 
 		for (int i = 0; i < control.listadoAviones.size(); i++) {
@@ -227,6 +232,63 @@ public class PermisosRadar extends JPanel {
 			}
 		}
 		return 0;
+	}
+
+	public void actualiza() {
+
+		contacto.removeAll();
+		contacto();
+		asignarodadura.removeAll();
+		;
+		rodadura();
+		apagadoMotores.removeAll();
+		apagadoMotores();
+
+		updateUI();
+
+	}
+	
+	public void compruebaviento(Avion avion) {
+		Derrota derrota;
+		if(DireccionViento.direccion == 0 && avion.getPista() != 36) {
+			
+			 derrota = new Derrota();
+			 derrota.setVisible(true);
+			 
+		}else if(DireccionViento.direccion == 1 && avion.getPista() != 18) {
+			
+			 derrota = new Derrota();
+			 derrota.setVisible(true);
+			 
+		}else if(DireccionViento.direccion == 2 && avion.getPista() != 11) {
+			
+			 derrota = new Derrota();
+			 derrota.setVisible(true);
+			
+		}else if(DireccionViento.direccion == 3 && avion.getPista() != 29) {
+			
+			 derrota = new Derrota();
+			 derrota.setVisible(true);
+			
+		}
+	}
+
+	public void escribeRegistro() {
+
+		BufferedWriter bw = null;
+		try {
+			File fichero = new File("./registro/registro.txt");
+
+			bw = new BufferedWriter(new FileWriter(fichero, true));
+			bw.write("\n" + control.listadoAviones.elementAt(0).infoAvionDesText() + "\n");
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				bw.close(); // Cerramos el buffer
+			} catch (Exception e) {
+			}
+		}
 	}
 
 }

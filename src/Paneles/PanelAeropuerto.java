@@ -12,17 +12,20 @@ import Contenido_Paneles.TablalistaAvionesAeropuerto;
 import bilbao.Control;
 
 
+
 public class PanelAeropuerto extends JPanel  {
 	
 	private static final long serialVersionUID = 1L;
 	Control listadoAviones = new Control();
+	
 	TablalistaAvionesAeropuerto listaterminal = new TablalistaAvionesAeropuerto(listadoAviones);
-	PermisosAeropuerto permisosterminal = new PermisosAeropuerto(listadoAviones);
+	PermisosAeropuerto permisosterminal = new PermisosAeropuerto(listadoAviones, listaterminal);
 
 	
-	public PanelAeropuerto() {
-	
-	
+	public PanelAeropuerto(Control listadoAviones) {
+		
+		this.listadoAviones = listadoAviones;
+
 		setLayout(new GridLayout(1,2));
 		
 	

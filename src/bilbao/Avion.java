@@ -2,11 +2,12 @@ package bilbao;
 
 public class Avion implements PermisosDespegue, PermisosAterrizaje {
 
-	private String nombre;
-	private String origen;
-	private String destino;
-	private String rodadura;
-	private int espera;
+	private String nombre = null;
+	private String origen = null;
+	private String destino = null;
+	private String rodadura = null;
+	private String horaDespegue= null;
+	private String horaAterrizaje= null;
 	private int pista;
 	private boolean seleccion = false;
 	private boolean radio = false;
@@ -16,6 +17,8 @@ public class Avion implements PermisosDespegue, PermisosAterrizaje {
 	private boolean despegar = false;
 	private boolean contacto = false;
 	private boolean apagado = false;
+
+
 
 	Avion(String nombre, String origen, String destino) {
 
@@ -52,7 +55,7 @@ public class Avion implements PermisosDespegue, PermisosAterrizaje {
 		this.contacto = contacto;
 	}
 
-	public boolean Apagado() {
+	public boolean getApagado() {
 		return apagado;
 	}
 
@@ -108,133 +111,92 @@ public class Avion implements PermisosDespegue, PermisosAterrizaje {
 		this.nombre = nombre;
 	}
 
-	public void permisoDespegue() {
 
-		pruebaRadio();
-		asignarRuta();
-		puestaenMarcha();
-		despegue();
 
-	}
-
-	public void permisoAterrizar() {
-
-		contacto();
-		apagadomotores();
-
-	}
 
 	public String pruebaRadio() {
-		
+
 		String estado = " ";
-		
-		if(radio == true) {
-			
+
+		if (radio == true) {
+
 			estado = " Aceptada";
-			
-		}else {
-			
+
+		} else {
+
 			estado = " Denegada";
 		}
-		
+
 		return estado;
 
 	}
 
 	public String asignarRuta() {
-		
+
 		String estado = " ";
-		
-		if(rutaAsignada == true) {
-			
+
+		if (rutaAsignada == true) {
+
 			estado = " Aceptada. Pista: " + pista;
-			
-		}else {
-			
+
+		} else {
+
 			estado = " Denegada";
 		}
-		
+
 		return estado;
-		
+
 	}
 
 	public String puestaenMarcha() {
-		
-	String estado = " ";
-		
-		if(puestaenMarcha == true) {
-			
+
+		String estado = " ";
+
+		if (puestaenMarcha == true) {
+
 			estado = " Aceptada";
-			
-		}else {
-			
+
+		} else {
+
 			estado = " Denegada";
 		}
-		
+
 		return estado;
 	}
 
 	public String despegue() {
 		String estado = " ";
-		
-		if(despegar == true) {
-			
+
+		if (despegar == true) {
+
 			estado = " Aceptado";
-			
-		}else {
-			
+
+		} else {
+
 			estado = " Denegado";
 		}
-		
+
 		return estado;
 	}
 
-	public void checklistDespegue() {
+	public String motores() {
 
-		if (radio == true && rutaAsignada == true && puestaenMarcha == true && despegar == true) {
+		String estado = " ";
 
-			System.out.println("Se puede");
+		if (apagado == true) {
+
+			estado = " Apagados";
+
 		} else {
 
-			System.out.println("NO se puede");
+			estado = " Encendidos";
 		}
+
+		return estado;
 
 	}
 
-	public boolean contacto() {
-		Radar rBilbao = new Radar();
-		System.out.println("Buenos días. aquí " + nombre + " establecido contacto ILS");
 
-		if (rBilbao.contacto(nombre)) {
-			contacto = true;
-			return contacto;
-		}
-		return false;
-	}
-
-	public boolean apagadomotores() {
-		Radar rBilbao = new Radar();
-		System.out.println(nombre + " apagado de motores. Gracias");
-		if (rBilbao.apagadoMotores(nombre, destino)) {
-			apagado = true;
-			return apagado;
-		}
-
-		return false;
-
-	}
-
-	public void checklistAterrizaje() {
-
-		if (contacto == true) {
-
-			System.out.println("Se puede");
-		} else {
-
-			System.out.println("NO se puede");
-		}
-
-	}
 
 	public int getPista() {
 		return pista;
@@ -252,98 +214,8 @@ public class Avion implements PermisosDespegue, PermisosAterrizaje {
 		this.rodadura = rodadura;
 	}
 
-	public int tiempoEspera() {
+	
 
-		if (pista == 18) {
-
-			if ("Y2".equalsIgnoreCase(rodadura)) {
-				
-				espera = 1;
-
-			} else if ("A1".equalsIgnoreCase(rodadura)) {
-				
-				espera = 2;
-
-			} else if ("C2".equalsIgnoreCase(rodadura)) {
-				
-				espera = 3;
-
-			} else if ("E2".equalsIgnoreCase(rodadura)) {
-				
-				espera = 4;
-
-			}
-
-		} else if (pista == 29) {
-			if ("Y2".equalsIgnoreCase(rodadura)) {
-				
-				espera = 3;
-
-			} else if ("A1".equalsIgnoreCase(rodadura)) {
-				
-				espera = 2;
-
-			} else if ("C2".equalsIgnoreCase(rodadura)) {
-				
-				espera = 4;
-
-			} else if ("E2".equalsIgnoreCase(rodadura)) {
-				
-				espera = 1;
-
-			}
-
-		} else if (pista == 35) {
-			if ("Y2".equalsIgnoreCase(rodadura)) {
-				
-				espera = 3;
-
-			} else if ("A1".equalsIgnoreCase(rodadura)) {
-				
-				espera = 2;
-
-			} else if ("C2".equalsIgnoreCase(rodadura)) {
-				
-				espera = 1;
-
-			} else if ("E2".equalsIgnoreCase(rodadura)) {
-				
-				espera = 4;
-
-			}
-
-		} else if (pista == 11) {
-			if ("Y2".equalsIgnoreCase(rodadura)) {
-				
-				espera = 3;
-
-			} else if ("A1".equalsIgnoreCase(rodadura)) {
-				
-				espera = 1;
-
-			} else if ("C2".equalsIgnoreCase(rodadura)) {
-				
-				espera = 2;
-
-			} else if ("E2".equalsIgnoreCase(rodadura)) {
-				
-				espera = 4;
-
-			}
-
-		}
-
-		return espera;
-
-	}
-
-	public int getEspera() {
-		return espera;
-	}
-
-	public void setEspera(int espera) {
-		this.espera = espera;
-	}
 
 	public boolean getPreparadodespegue() {
 		return preparadodespegue;
@@ -352,5 +224,36 @@ public class Avion implements PermisosDespegue, PermisosAterrizaje {
 	public void setPreparadodespegue(boolean preparadodespegue) {
 		this.preparadodespegue = preparadodespegue;
 	}
+	
+
+
+	public String getHoraDespegue() {
+		return horaDespegue;
+	}
+
+	public void setHoraDespegue(String horaDespegue) {
+		this.horaDespegue = horaDespegue;
+	}
+
+	public String getHoraAterrizaje() {
+		return horaAterrizaje;
+	}
+
+	public void setHoraAterrizaje(String horaAterrizaje) {
+		this.horaAterrizaje = horaAterrizaje;
+	}
+
+
+	public String infoAvionDesText() {
+		
+		return "Avión: " + nombre + "| Origen:" + origen + "| Destino: " + destino + " | Hora despegue: " + horaDespegue ;
+		
+	}
+	public String infoAvionAteText() {
+		
+		return "Avión: " + nombre + "| Origen:" + origen + "| Destino: " + destino + " | Hora aterrizaje: " + horaAterrizaje ;
+		
+	}
+
 
 }

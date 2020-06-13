@@ -1,15 +1,17 @@
 package Contenido_Paneles;
 
-import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-
-import bilbao.Control;
-import dialogos.Infoavion;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+import bilbao.Control;
+import dialogos.InfoavionRadar;
 
 public class TablalistaAvionesRadar extends JPanel {
 
@@ -71,8 +73,8 @@ public class TablalistaAvionesRadar extends JPanel {
 					// Seleccion del avión para permisos
 					cadena = (String) tablaAero.getValueAt(fila, 0);
 					avionselec = cadena;
-					Infoavion secundaria = new Infoavion(control);
-					secundaria.setVisible(true);
+					InfoavionRadar informaavion = new InfoavionRadar(control,cadena);
+					informaavion.setVisible(true);
 				}
 			}
 		});

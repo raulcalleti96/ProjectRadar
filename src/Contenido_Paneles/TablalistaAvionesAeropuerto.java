@@ -11,7 +11,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import bilbao.Control;
-import dialogos.Infoavion;
+import dialogos.InfoavionTerminal;
 
 public class TablalistaAvionesAeropuerto extends JPanel {
 
@@ -70,10 +70,11 @@ public class TablalistaAvionesAeropuerto extends JPanel {
 						 */
 						// Seleccion del avión para permisos
 						cadena = (String) tablaAero.getValueAt(fila, 0);
+					
 					avionselec = cadena;
 
-					Infoavion secundaria = new Infoavion(control);
-					secundaria.setVisible(true);
+					InfoavionTerminal informaavion = new InfoavionTerminal(control,cadena);
+					informaavion.setVisible(true);
 
 					// System.out.println(avionselec + "LA SELECCION FUNCIONA");
 				}

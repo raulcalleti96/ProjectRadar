@@ -9,12 +9,14 @@ import javax.swing.Timer;
 
 public class DireccionViento extends JLabel implements ActionListener{
 	private static final long serialVersionUID = 1;
+	static int direccion = 0;
 	
 	public DireccionViento(){
 		
-		setText("VIENTO: NORTE");
-	
-		Timer t = new Timer(6000, this);
+		setText("Viento: NORTE ");
+		Timer t = new Timer(10000, this);
+		
+
 		t.start();
 
 	}
@@ -23,24 +25,28 @@ public class DireccionViento extends JLabel implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 
 		Random generaviento = new Random();
-		int direccion = generaviento.nextInt(4);
+		int direccionG = generaviento.nextInt(4);
 			
-		switch(direccion) {
+		switch(direccionG) {
 		
 			case 0:
 				setText("VIENTO: NORTE");
+				direccion = 0;
 				break;
 			
 			case 1:
 				setText("VIENTO: SUR");
+				direccion = 1;
 				break;
 				
 			case 2:
 				setText("VIENTO: ESTE");
+				direccion = 2;
 				break;
 				
 			case 3:
 				setText("VIENTO: OESTE");
+				direccion = 3;
 				break;
 	  }
 	}
