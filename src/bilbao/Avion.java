@@ -8,7 +8,6 @@ public class Avion implements PermisosDespegue, PermisosAterrizaje {
 	private String rodadura = null;
 	private String horaDespegue= null;
 	private String horaAterrizaje= null;
-	private int pista;
 	private boolean seleccion = false;
 	private boolean radio = false;
 	private boolean rutaAsignada = false;
@@ -17,8 +16,8 @@ public class Avion implements PermisosDespegue, PermisosAterrizaje {
 	private boolean despegar = false;
 	private boolean contacto = false;
 	private boolean apagado = false;
-
-
+	private int pista;
+ 
 
 	Avion(String nombre, String origen, String destino) {
 
@@ -27,7 +26,9 @@ public class Avion implements PermisosDespegue, PermisosAterrizaje {
 		setDestino(destino);
 
 	}
-
+	
+	
+ 
 	public Avion() {
 	}
 
@@ -111,9 +112,48 @@ public class Avion implements PermisosDespegue, PermisosAterrizaje {
 		this.nombre = nombre;
 	}
 
+	public int getPista() {
+		return pista;
+	}
+
+	public void setPista(int pista) {
+		this.pista = pista;
+	}
+
+	public String getRodadura() {
+		return rodadura;
+	}
+
+	public void setRodadura(String rodadura) {
+		this.rodadura = rodadura;
+	}
+
+	public boolean getPreparadodespegue() {
+		return preparadodespegue;
+	}
+
+	public void setPreparadodespegue(boolean preparadodespegue) {
+		this.preparadodespegue = preparadodespegue;
+	}
+	
 
 
+	public String getHoraDespegue() {
+		return horaDespegue;
+	}
 
+	public void setHoraDespegue(String horaDespegue) {
+		this.horaDespegue = horaDespegue;
+	}
+
+	public String getHoraAterrizaje() {
+		return horaAterrizaje;
+	}
+
+	public void setHoraAterrizaje(String horaAterrizaje) {
+		this.horaAterrizaje = horaAterrizaje;
+	}
+	
 	public String pruebaRadio() {
 
 		String estado = " ";
@@ -198,62 +238,21 @@ public class Avion implements PermisosDespegue, PermisosAterrizaje {
 
 
 
-	public int getPista() {
-		return pista;
-	}
-
-	public void setPista(int pista) {
-		this.pista = pista;
-	}
-
-	public String getRodadura() {
-		return rodadura;
-	}
-
-	public void setRodadura(String rodadura) {
-		this.rodadura = rodadura;
-	}
-
-	
-
-
-	public boolean getPreparadodespegue() {
-		return preparadodespegue;
-	}
-
-	public void setPreparadodespegue(boolean preparadodespegue) {
-		this.preparadodespegue = preparadodespegue;
-	}
-	
-
-
-	public String getHoraDespegue() {
-		return horaDespegue;
-	}
-
-	public void setHoraDespegue(String horaDespegue) {
-		this.horaDespegue = horaDespegue;
-	}
-
-	public String getHoraAterrizaje() {
-		return horaAterrizaje;
-	}
-
-	public void setHoraAterrizaje(String horaAterrizaje) {
-		this.horaAterrizaje = horaAterrizaje;
-	}
-
-
 	public String infoAvionDesText() {
-		
-		return "Avión: " + nombre + "| Origen:" + origen + "| Destino: " + destino + " | Hora despegue: " + horaDespegue ;
-		
+
+		return "Avión: " + nombre + "| Origen:" + origen + "| Destino: " + destino + " | Hora despegue: "
+				+ horaDespegue;
+
 	}
+
 	public String infoAvionAteText() {
-		
-		return "Avión: " + nombre + "| Origen:" + origen + "| Destino: " + destino + " | Hora aterrizaje: " + horaAterrizaje ;
-		
+
+		return "Avión: " + nombre + "| Origen:" + origen + "| Destino: " + destino + " | Hora aterrizaje: "
+				+ horaAterrizaje;
+
 	}
+	
+
 
 
 }

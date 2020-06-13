@@ -51,8 +51,8 @@ public class TablalistaAvionesRadar extends JPanel {
 		 * tablaAero.setSize(45, 45); scroll.setSize(30, 30);
 		 */
 
+		
 		// METODO DE SELECCION DEL AVIÓN
-
 		tablaAero.addMouseListener(new MouseAdapter() {
 
 			public void mouseClicked(MouseEvent e) {
@@ -73,7 +73,7 @@ public class TablalistaAvionesRadar extends JPanel {
 					// Seleccion del avión para permisos
 					cadena = (String) tablaAero.getValueAt(fila, 0);
 					avionselec = cadena;
-					InfoavionRadar informaavion = new InfoavionRadar(control,cadena);
+					InfoavionRadar informaavion = new InfoavionRadar(control, cadena);
 					informaavion.setVisible(true);
 				}
 			}

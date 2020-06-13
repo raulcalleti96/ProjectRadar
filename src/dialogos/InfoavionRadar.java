@@ -16,8 +16,8 @@ public class InfoavionRadar extends JDialog {
 
 		this.control = control;
 		setLayout(new FlowLayout());
-		setBounds(340, 210, 410, 210);
-
+		setBounds(340, 210, 310, 110);
+ 
 		seleccion(matricula);
 	}
 
@@ -30,7 +30,7 @@ public class InfoavionRadar extends JDialog {
 				indice = i;
 			}
 
-		}
+		} 
 
 		// Etiqueta
 		JLabel nombre = new JLabel("Avión: " + control.llegadaAviones.elementAt(indice).getNombre());
@@ -53,5 +53,7 @@ public class InfoavionRadar extends JDialog {
 	
 		
 	}
+	
+
 
 }

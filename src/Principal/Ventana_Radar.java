@@ -109,7 +109,7 @@ public class Ventana_Radar extends JFrame {
 		pdi.setVisible(false);
 
 		Ventana_Radar ventana = new Ventana_Radar();
-		ventana.setIconImage(Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("icono.png")));
+		
 
 		// ventana.setResizable(false);
 		ventana.setTitle("CONTROL AÉREO");

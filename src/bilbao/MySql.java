@@ -12,10 +12,10 @@ public class MySql {
 	public MySql() {
 
 	}
-	
-	public Vector<Avion> listadollegadas(){
-		
-		Vector <Avion> llegadasAviones = new Vector<Avion>();
+
+	public Vector<Avion> listadollegadas() {
+
+		Vector<Avion> llegadasAviones = new Vector<Avion>();
 		// Parametros
 		String driver = "com.mysql.cj.jdbc.Driver";
 		String database = "terminal";
@@ -54,8 +54,7 @@ public class MySql {
 			System.out.println(e);
 
 		} finally {
-			
-			
+
 			try {
 
 				if (rs != null)
@@ -73,13 +72,11 @@ public class MySql {
 		}
 		return null;
 
-	
-		
 	}
-	
+
 	public Vector<Avion> rellenarLista() {
-		
-		Vector <Avion> listadoAviones = new Vector<Avion>();
+
+		Vector<Avion> listadoAviones = new Vector<Avion>();
 		// Parametros
 		String driver = "com.mysql.cj.jdbc.Driver";
 		String database = "terminal";
@@ -118,8 +115,7 @@ public class MySql {
 			System.out.println(e);
 
 		} finally {
-			
-			
+
 			try {
 
 				if (rs != null)
@@ -138,5 +134,5 @@ public class MySql {
 		return null;
 
 	}
-	
+
 }

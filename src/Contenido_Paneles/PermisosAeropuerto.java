@@ -105,7 +105,7 @@ public class PermisosAeropuerto extends JPanel {
 			PanelTerminal.setEnabledAt(2, false);
 			PanelTerminal.setEnabledAt(3, false);
 			Control.listadoVacio = true;
-			System.out.println(Control.listadoVacio +  " " + Control.llegadaVacio);
+			System.out.println(Control.listadoVacio + " " + Control.llegadaVacio);
 			control.compruebalista();
 
 		}
@@ -161,7 +161,7 @@ public class PermisosAeropuerto extends JPanel {
 			PanelTerminal.setEnabledAt(2, false);
 			PanelTerminal.setEnabledAt(3, false);
 			Control.listadoVacio = true;
-			System.out.println(Control.listadoVacio +  " " + Control.llegadaVacio);
+			System.out.println(Control.listadoVacio + " " + Control.llegadaVacio);
 			control.compruebalista();
 
 		}
@@ -178,6 +178,7 @@ public class PermisosAeropuerto extends JPanel {
 			JLabel mensajerecibidomarcha = new JLabel();
 
 			JComboBox<String> rodadura = new JComboBox<String>();
+			rodadura.addItem(" ");
 			rodadura.addItem("E2");
 			rodadura.addItem("Y2");
 			rodadura.addItem("A1");
@@ -256,7 +257,7 @@ public class PermisosAeropuerto extends JPanel {
 			PanelTerminal.setEnabledAt(2, false);
 			PanelTerminal.setEnabledAt(3, false);
 			Control.listadoVacio = true;
-			System.out.println(Control.listadoVacio +  " " + Control.llegadaVacio);
+			System.out.println(Control.listadoVacio + " " + Control.llegadaVacio);
 			control.compruebalista();
 
 		}
@@ -299,7 +300,7 @@ public class PermisosAeropuerto extends JPanel {
 			PanelTerminal.setEnabledAt(2, false);
 			PanelTerminal.setEnabledAt(3, false);
 			Control.listadoVacio = true;
-			System.out.println(Control.listadoVacio +  " " + Control.llegadaVacio);
+			System.out.println(Control.listadoVacio + " " + Control.llegadaVacio);
 			control.compruebalista();
 
 		}
