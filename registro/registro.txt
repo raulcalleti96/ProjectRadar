@@ -135,3 +135,9 @@ Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 18:33:2
 Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 18:33:2
 
 Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 18:33:2
+
+Avión: IB5805| Origen:MADRID| Destino: BILBAO | Hora despegue: 0:31:35
+
+Avión: IB2365| Origen:BILBAO| Destino: MADRID | Hora despegue: 0:44:36
+
+Avión: IB5805| Origen:MADRID| Destino: BILBAO | Hora despegue: 5:15:36
