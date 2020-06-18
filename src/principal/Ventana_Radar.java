@@ -42,7 +42,6 @@ public class Ventana_Radar extends JFrame {
 	JSplitPane info = new JSplitPane(JSplitPane.VERTICAL_SPLIT, reloj, rt);
 
 	// Componentes del panel inferior
-
 	PanelRadar radar = new PanelRadar(listadoAviones);
 	PanelAeropuerto terminal = new PanelAeropuerto(listadoAviones);
 

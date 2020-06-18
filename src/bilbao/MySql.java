@@ -38,13 +38,14 @@ public class MySql {
 		String database = "terminal";
 		String hostname = "localhost";
 		String port = "3306";
-		String url = "jdbc:mysql://" + hostname + ":" + port + "/" + database + "?useSSL=false&serverTimeZone=UTC";
+		String url = "jdbc:mysql://" + hostname + ":" + port + "/" + database + "?useSSL=false&serverTimeZone=CEST";
 		String usr = "root";
 		String pwd = "12345678";
 		//Referencias de las clases de las bases de datos
 		Connection conn = null;
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
+
 
 		try {
 			//Se levanta el driver
@@ -120,6 +121,7 @@ public class MySql {
 		String hostname = "localhost";
 		String port = "3306";
 		String url = "jdbc:mysql://" + hostname + ":" + port + "/" + database + "?useSSL=false&serverTimeZone=UTC";
+		
 		String usr = "root";
 		String pwd = "12345678";
 		

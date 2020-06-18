@@ -25,7 +25,7 @@ public class ImagenMapa extends JPanel{
 	//Instanciación de la clase de imagen pasando nombre del fichero de la imagen y la escala
 	ImageIcon imagen = new ImageIcon("pista.png");
 	Image imagenR = imagen.getImage();
-	Image pista = imagenR.getScaledInstance(600, 400, Image.SCALE_DEFAULT);
+	Image pista = imagenR.getScaledInstance(850, 450, Image.SCALE_DEFAULT);
 	ImageIcon iconopista = new ImageIcon(pista);
 	
 	/**
